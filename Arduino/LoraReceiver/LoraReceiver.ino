@@ -1,10 +1,9 @@
 /*********
+ * based on:
   LoRa Receiver
   pollux labs
   https://polluxlabs.net
 *********/
-
-//TODO: Falls Fehler beim Testen: Klammern in der Loop überprüfen!
 
 #include <LoRa.h>
 #include <MQTTPubSubClient.h>
@@ -22,7 +21,7 @@ WiFiClient client;
 MQTTPubSubClient mqtt;
 
 
-//Pins, an denen das LoRa-Modul am ESP32 angeschlossen ist
+//LoRa-ModulPins
 #define SCK 5
 #define MISO 19
 #define MOSI 27
@@ -30,10 +29,10 @@ MQTTPubSubClient mqtt;
 #define RST 14
 #define DIO0 26
 
-//Frequenzbereich für Europa
+//Frequenzbereich Europa
 #define BAND 866E6
 
-//Counter für die gesendeten Datenpakete
+//Counter für die empfangene Datenpakete, wird regelmäßig zurückgesetzt
 int counter = 0;
 int p = 100;
 int rssi;
@@ -45,7 +44,7 @@ String LoRaData;
 void setup() {
     //Seriellen Monitor starten
     Serial.begin(115200);
-    chipID = (ESP.getEfuseMac() << 40) >> 40;
+    chipID = (ESP.getEfuseMac() << 40) >> 40; //SensorID, die per mqtt an Raspberry Pi übermittelt wird
     WiFi.setHostname("LoRaReceiver");
     WiFi.begin(ssid, pass);
   
@@ -75,7 +74,7 @@ void setup() {
         delay(1000);
     }
     Serial.println(" connected!");
-    //Pins für LoRa definieren und Kommunikation starten
+    //Pins für LoRa setzen und Kommunikation starten
     SPI.begin(SCK, MISO, MOSI, SS);
     LoRa.setPins(SS, RST, DIO0);
   
@@ -98,12 +97,11 @@ void loop() {
     
     //Namen anpassen
     jsonDoc["device-type"] = "LoraReceiver";
-    // Unterschiedlich je Sensor vermutlich am Sinnvollsten. Also noch was anhängen oder so.
-    jsonDoc["identifier"] = chipID + sensorID;
+    jsonDoc["identifier"] = chipID + sensorID; //eindeutiger Identifier
     mqtt.update();
     //Serial.print("Paket empfangen ");
 
-    //Paket auslesen
+    //Paket empfangen
     while (LoRa.available()) 
     {
       LoRaData = LoRa.readString();
@@ -111,30 +109,30 @@ void loop() {
     }
 
     //RSSI ausgeben
-    
     rssi = LoRa.packetRssi();
     Serial.print(" mit RSSI ");
     Serial.println(rssi);
     
-    //Problem: Einrichtung. Welche Werte passen muss in der tatsächlichen Umgebung geprüft werden.
-    //Wann befindet sich jemand im Raum?
-    if(1)
-    {
-      //hier wieder aktualisieren!
-      jsonDoc["msg-type"] = "lora";
-      jsonDoc["value"]= rssi;
-      Serial.println("Aktivität!");
-      serializeJson(jsonDoc, jsonMessageBuffer);
-      mqtt.publish("ttgo2",jsonMessageBuffer);
-    }
+    /*
+     * Wann befindet sich jemand im Raum? -> Werte variieren zu stark, für den Anwendungsfall nicht flexibel nutzbar. 
+     * Problem: Einrichtung. Welche Werte passen muss in der tatsächlichen Umgebung geprüft werden.
+     * RSSI Werte und Ping per JSONmsg via mqtt an Raspberry schicken
+   */
 
-    
+    jsonDoc["msg-type"] = "lora";
+    jsonDoc["value"]= rssi;
+    Serial.println("Aktivität!");
+    serializeJson(jsonDoc, jsonMessageBuffer);
+    mqtt.publish("ttgo2",jsonMessageBuffer);
+ 
+
+    //>= 100 prüfen, falls Paket mit Nr. 100 nicht empfangen wird
     if (p >= 100) 
     {
       Serial.println("Ping!");
       jsonDoc["msg-type"] = "ping";
       //Anpassen: Wann ist Funktion beeinträchtigt?
-      if (rssi >= -100)
+      if (rssi >= -110)
       {
         jsonDoc["value"] = "ok";
       } 
