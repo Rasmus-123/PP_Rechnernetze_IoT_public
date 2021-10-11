@@ -1,4 +1,4 @@
-# PP_Rechnernetze_IoT_public
+# Programmierpraktikum Rechnernetze - Internet of Things
 
 Projekt im Rahmen des Programmierpraktikums Rechnernetze im Sommersemster 2021 an der UOS.
 
