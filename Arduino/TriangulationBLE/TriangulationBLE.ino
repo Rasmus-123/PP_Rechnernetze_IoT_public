@@ -32,6 +32,7 @@ static BLEAdvertisedDevice* myDevice;
 bool connected = false;
 int ping = 100;
 
+
 class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks
 {
     void onResult(BLEAdvertisedDevice advertisedDevice)
@@ -100,52 +101,61 @@ void setup()
     Serial.println("Scanning...");
 }
 
+void sendPing()
+{
+    DynamicJsonDocument jsonPingDoc(128);
+    char jsonPingMessageBuffer[128];
+
+    jsonPingDoc["device-type"] = "Triangulation";
+    jsonPingDoc["identifier"] = chipID;
+
+    jsonPingDoc["msg-type"] = "ping";
+    jsonPingDoc["value"] = "ok";
+
+    serializeJson(jsonPingDoc, jsonPingMessageBuffer);
+    mqtt.publish("ttgo2/ping", jsonPingMessageBuffer);
+}
+
+void sendRSSI(int rssi)
+{
+    DynamicJsonDocument jsonDoc(128);
+    char jsonMessageBuffer[128];
+
+    jsonDoc["device-type"] = "Triangulation";
+    jsonDoc["identifier"] = chipID;
+
+    jsonDoc["msg-type"] = "Triangulation";
+    jsonDoc[NAME] = rssi;
+
+    serializeJson(jsonDoc, jsonMessageBuffer);
+    mqtt.publish("Rssi",jsonMessageBuffer);
+}
+
 void loop()
 {
     BLEScanResults foundDevices = pBLEScan->start(10); // Scan for 10 Seconds
 
     if (connected) 
     {
-        DynamicJsonDocument jsonDoc(128);
-        char jsonMessageBuffer[128];
-
-        jsonDoc["device-type"] = "Triangulation";
-        jsonDoc["identifier"] = chipID;
-
-        ping++;
         delay(100);
 
-        int rssi = myDevice->getRSSI(); 
-        Serial.println("");
-        Serial.print("RSSI:");
+        int rssi = myDevice->getRSSI();
+        Serial.print("RSSI: ");
         Serial.println(rssi);
 
-        jsonDoc["msg-type"] = "Triangulation";
-        jsonDoc[NAME] = rssi;
-
-        serializeJson(jsonDoc, jsonMessageBuffer);
-        mqtt.publish("Rssi",jsonMessageBuffer);
+        sendRSSI(rssi);
 
         delay(200);
         if (ping >= 100) 
         {
-            DynamicJsonDocument jsonPingDoc(128);
-            char jsonPingMessageBuffer[128];
-
-            jsonPingDoc["device-type"] = "Triangulation";
-            jsonPingDoc["identifier"] = chipID;
-
-            jsonPingDoc["msg-type"] = "ping";
-            jsonPingDoc["value"] = "ok";
-
-            serializeJson(jsonPingDoc, jsonPingMessageBuffer);
-            mqtt.publish("ttgo2/ping", jsonPingMessageBuffer);
-
+            sendPing();
             ping = 0;
         }
 
         // Clean up
         pBLEScan->clearResults();
         delete myDevice;
+
+        ping++;
     }
 }
