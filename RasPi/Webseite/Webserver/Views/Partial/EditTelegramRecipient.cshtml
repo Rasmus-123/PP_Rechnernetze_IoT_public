@@ -1,0 +1,23 @@
+﻿@model Webserver.Data.Types.TelegramRecipient
+
+<td colspan="3">
+    <form asp-action="UpdateTelegramRecipient" asp-controller="Partial">
+        <input asp-for="ID" type="hidden" />
+        <div class="row">
+            <div class="col-2">
+                @Html.DisplayFor(model => model.ID)
+            </div>
+            <div class="col-7">
+                <input asp-for="Address" class="w-100" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-success" title="Speichern"><img src="~/img/save-floppy-disk.png" width="15" style="filter: invert(100%);padding-bottom: 5px;" /></button>
+                    <a asp-action="DeleteTelegramRecipient" asp-controller="Settings" asp-route-id="@Model.ID" class="btn btn-danger" title="Löschen"><i class="bi-trash"></i></a>
+                    <a asp-action="TelegramList" asp-controller="Settings" class="btn btn-secondary" title="Abbrechen"><i class="bi-x-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</td>

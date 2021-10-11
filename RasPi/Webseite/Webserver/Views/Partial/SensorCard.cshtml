@@ -1,0 +1,76 @@
+﻿@model Webserver.Models.Sensor.SensorInfo
+
+<div class="card edit_sensor_name @( Model.Active ? "border-primary" : "border-danger" )" id="sensor_card_@Model.Sensor.ID" entryid="@Model.Sensor.ID">
+    <div class="card-header text-center">
+        @Model.Sensor.Type
+    </div>
+    <div class="card-body">
+        <h2 class="card-title text-center">
+            @Model.Sensor.DisplayName
+        </h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <span class="row">
+                    <b class="col-4 px-0">
+                        Aktiv:
+                    </b>
+                    <a class="col-8 px-0">
+                        @(Model.Active ? "Ja": "Nein")
+                        @if (Model.LastPing is not null)
+                        {
+                            <br/>
+                            @Html.Raw("[" + Model.LastPing.Timestamp + "]")
+                            <br/>
+                            @Html.Raw(Model.LastPing.Status)
+                        }
+                    </a>
+                </span>
+            </li>
+            <li class="list-group-item">
+                <span class="row">
+                    <b class="col-4 px-0">
+                        Letzte Aktivität:
+                    </b>
+                    <a class="col-8 px-0">
+                        @Html.DisplayFor(x => Model.LastActivityTimestamp)
+                        <br />
+                        @Html.DisplayFor(x => Model.LastActivityValue)
+                    </a>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <a class="btn btn-outline-warning edit_sensor_button">
+        Bearbeiten
+    </a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.edit_sensor_button').hide();
+
+        $('.edit_sensor_name').hover(function () {
+            $(this).find('.edit_sensor_button').show('fast');
+        }, function () {
+            $(this).find('.edit_sensor_button').hide('fast');
+        });
+
+        $('.edit_sensor_name .btn').on('click', function () {
+            var target = $(this).closest('.edit_sensor_name');
+
+            var entryid = target.attr('entryid');
+
+            $.ajax({
+                url: "@Url.Action("EditSensorCard", "Partial")",
+                data: { sensorID: entryid },
+                type: "POST",
+                success: function (result) {
+                    target.html(result);
+                }
+            });
+
+        });
+    });
+
+</script>

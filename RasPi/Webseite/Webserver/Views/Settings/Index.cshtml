@@ -1,0 +1,24 @@
+﻿@model Webserver.Models.Settings.Settings
+
+@{
+    ViewData["Title"] = "Einstellungen";
+}
+
+<h1>Einstellungen</h1>
+
+<h4>Netzwerk</h4>
+<hr />
+<partial name="~/Views/Partial/EditNetworkSettings.cshtml" for="NetworkSettings" />
+
+<div>
+    <a asp-action="Reboot" class="btn btn-danger">Neustarten</a>
+</div>
+
+<br />
+
+<h4>Benachrichtigungen</h4>
+<hr />
+<div class="btn-group-vertical">
+    <a asp-action="MailingList" class="btn btn-outline-primary">E-Mail Liste <i class="bi-envelope"></i></a>
+    <a asp-action="TelegramList" class="btn btn-outline-primary">Telegram Liste <i class="bi-telegram"></i></a>
+</div>

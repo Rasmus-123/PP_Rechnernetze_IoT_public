@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Webserver.Data.Types.TelegramRecipient>
+
+@{
+    ViewData["Title"] = "Telegram Empfänger";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>
+    <button class="btn btn-outline-success" title="Add Recipient" data-toggle="modal" data-target="#addTelegramModal"><i class="bi-plus-lg"></i></button>
+</p>
+
+<div class="modal fade" id="addTelegramModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="AddTelegramRecipient" method="get">
+                <div class="modal-header">
+                    <h5 class="modal-title">Telegram Empfänger hinzufügen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="bi-x"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row ">
+                        <input type="tel" name="address" class="form-control col" placeholder="01189998819991197253"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" value="Create" class="btn btn-primary">Hinzufügen</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr entryid="@item.ID">
+                <td>
+                    @Html.DisplayFor(x => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.Address)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-outline-warning edit_telegram_recipient_button" entryid="@item.ID"><i class="bi-pencil-square"></i></a>
+                        <a class="btn btn-outline-danger" asp-action="DeleteTelegramRecipient" asp-route-id="@item.ID"><i class="bi-trash"></i></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.edit_telegram_recipient_button').on('click', function () {
+            var target = $(this).closest('tr');
+
+            var entryid = $(this).attr('entryid');
+
+            $.ajax({
+                url: "@Url.Action("EditTelegramRecipient", "Partial")",
+                data: { id: entryid },
+                type: "POST",
+                success: function (result) {
+                    target.html(result);
+                }
+            });
+
+        });
+    });
+
+</script>

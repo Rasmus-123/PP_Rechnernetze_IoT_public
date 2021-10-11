@@ -1,0 +1,13 @@
+﻿@model Webserver.Models.Sensor.IndexViewModel
+@{
+    ViewData["Title"] = "Sensoren";
+}
+
+<div class="row">
+    @foreach (var sensor in Model.Sensors)
+    {
+        <div class="col-4 mb-3">
+            <partial name="/Views/Partial/SensorCard.cshtml" model="sensor" />
+        </div>
+    }
+</div>
