@@ -20,7 +20,7 @@
 
 
 <script type="text/javascript">
-    var last = {};
+    var last = 0;
 
     $(document).ready(function () {
         setInterval(function () {
@@ -28,7 +28,7 @@
 
                 var obj = JSON.parse(data);
 
-                if (obj === last) {
+                if (obj.ID === last) {
                     console.log("Identical to last!");
                     return;
                 }
@@ -53,7 +53,7 @@
 
                 $('#triangulationClosestTo').html(closest);
 
-                last = obj;
+                last = obj.ID;
             });
         }, 2000);
     });
