@@ -4,6 +4,9 @@ RSSI1 und RSSI2 sind TTGOs mit [TriangulationBLE](../../Arduino/TriangulationBLE
 
 RSSI3 ist ein RasPi der mit [Node-Red](https://github.com/yossihard/node-red-contrib-blebeacon-scanner) misst.
 
+V1 & V2 sind im identischen Rechteck gemessen.
+Quadrat im Quadrat.
+
 ## Aufbau
 
 RSSI1  
