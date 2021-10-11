@@ -9,7 +9,7 @@
 #include <SPI.h>
 #include <LoRa.h>
 
-//Pins, an denen das LoRa-Modul am ESP32 angeschlossen ist
+//Loramodul-Pins
 #define SCK 5
 #define MISO 19
 #define MOSI 27
@@ -17,7 +17,7 @@
 #define RST 14
 #define DIO0 26
 
-//Frequenzbereich für Europa
+//Frequenzbereich Europa
 #define BAND 866E6
 
 
@@ -29,7 +29,7 @@ void setup() {
   //Seriellen Monitor starten
   Serial.begin(115200);
   
-  //Pins für LoRa definieren und Kommunikation starten
+  //Pins für LoRa setzen und Kommunikation starten
   SPI.begin(SCK, MISO, MOSI, SS);
   LoRa.setPins(SS, RST, DIO0);
   
@@ -60,7 +60,8 @@ void loop() {
   {
     Serial.println("BeginPacket Fehler!");
   }
-  
+
+
   delay(1000);
   if (counter == 1000){
     counter = 0;
