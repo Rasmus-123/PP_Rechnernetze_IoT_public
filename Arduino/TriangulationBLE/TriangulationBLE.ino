@@ -1,3 +1,10 @@
+/**
+ * Arduino IDE Settings:
+ *      Board: TTGO T1
+ *      Partition Scheme: Huge APP
+ */
+
+
 #include <WiFi.h> 
 #include <MQTTPubSubClient.h>
 #include <ArduinoJson.h>
@@ -120,7 +127,7 @@ void loop()
         mqtt.publish("Rssi",jsonMessageBuffer);
 
         delay(200);
-        if (p == 100) 
+        if (ping >= 100) 
         {
             DynamicJsonDocument jsonPingDoc(128);
             char jsonPingMessageBuffer[128];
@@ -134,7 +141,7 @@ void loop()
             serializeJson(jsonPingDoc, jsonPingMessageBuffer);
             mqtt.publish("ttgo2/ping", jsonPingMessageBuffer);
 
-            p = 0;
+            ping = 0;
         }
 
         // Clean up
