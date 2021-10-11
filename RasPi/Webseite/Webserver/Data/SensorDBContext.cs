@@ -378,23 +378,5 @@ namespace Webserver.Data
                 return;
             }
         }
-
-        public IEnumerable<Types.RSSI> GetRSSIs(DateTime? earliest = null, DateTime? latest = null)
-        {
-            var connection = new MySqlConnection(ConnectionString);
-            var compiler = new SqlKata.Compilers.MySqlCompiler();
-            var sensorDB = new QueryFactory(connection, compiler);
-
-            var query = sensorDB.Query("rssi");
-
-            if (earliest is not null) query.Where("Timestamp", ">=", earliest);
-            if (latest is not null) query.Where("Timestamp", "<=", latest);
-
-            query.Limit(100000);
-
-            var results = query.Get<Types.RSSI>();
-
-            return results;
-        }
     }
 }
