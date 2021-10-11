@@ -87,7 +87,7 @@ void loop() {
     mqtt.publish("ttgo2",jsonMessageBuffer);
   } 
   //sends a ping and the information if the sensor seems to work correctly every X minutes
-  if (p == 100) { //Erhöhen, wenn fertig getestet
+  if (p == 1000) { 
     jsonDoc["msg-type"] = "ping";
     if (distance !=0){
       jsonDoc["value"] = "ok";

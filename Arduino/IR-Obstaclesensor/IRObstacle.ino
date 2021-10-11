@@ -1,8 +1,8 @@
 /*
- * Code für IRObstaclesensor. Ansatz: Sensor sollte dazu dienen festzustellen, ob eine Tür passiert wurde. Test: Reichweite liegt bei wenigen cm,
- * Unterbrechung in 40cm Distanz wird nie erkannt. Daher nicht für eine Tür geeignet. 
+ * Code for IRObstaclesensor. Sensor should recognize if someone walkes through a door. Test: range too low (few centimeters)
+ * Obstacle in 40cm isn't recognized -> not useful for this application
  * 
- * TTGO sendet bei Unterbrechung eine JSON-Message via MQTT an den Raspberry Pi. Die erfasste Aktvität wird in der Datenbank gespeichert, der Sensor erscheint auf der Website.
+ * TTGO sends a JSON-Message via MQTT to Raspberry Pi. Activity is stored in the database
  */
 
 
@@ -62,7 +62,7 @@ void loop() {
   mqtt.update();
   isObstacle = digitalRead(isObstaclePin);
 
-  //Aktivitätserkennung
+  //activity detection
   if (isObstacle == LOW){
     jsonDoc["value"] = "obstacle";
     jsonDoc["msg-type"] = "Aktivitaet";
