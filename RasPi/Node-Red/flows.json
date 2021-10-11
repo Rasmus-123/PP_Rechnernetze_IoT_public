@@ -1,0 +1,6706 @@
+[
+    {
+        "id": "1cbbac64aa4cf17a",
+        "type": "tab",
+        "label": "MQTT Incoming",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f55c06f1975f7955",
+        "type": "tab",
+        "label": "E-Mail Eingang",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "29259d5b7bef6133",
+        "type": "tab",
+        "label": "Timed Checks",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7129d7f73a104082",
+        "type": "tab",
+        "label": "Telegram-Test",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cddb446611f4a3c2",
+        "type": "subflow",
+        "name": "Get-SensorInfo",
+        "info": "Parameters:\n    payload = sensorID\n    \nReturns:\n    payload = SensorInfo",
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "0f69284d12b98f53"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1080,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "f6c9dca85953d5e5",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99",
+        "icon": "font-awesome/fa-database"
+    },
+    {
+        "id": "927f3f4276b40643",
+        "type": "subflow",
+        "name": "Get-SensorID_CreateIfNotExists",
+        "info": "Parameters:\n    msg.payload with identifier and device-type properties\n    \nReturns:\n    topic = \"sensor\"\n    payload = sensorID",
+        "category": "",
+        "in": [
+            {
+                "x": 260,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "b1df5ea58975902d"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 2460,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "6622fecc7db10fde",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99",
+        "icon": "font-awesome/fa-database",
+        "status": {
+            "x": 1640,
+            "y": 180,
+            "wires": [
+                {
+                    "id": "a7456aae28892ba5",
+                    "port": 0
+                },
+                {
+                    "id": "632d008e24a72a59",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "7bde532f6cd579f2",
+        "type": "subflow",
+        "name": "Send Mail to All",
+        "info": "Parameter:\n    payload = Mail-Text\n    topic = Betreff",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "a650f35eafa9790e"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#C7E9C0",
+        "icon": "node-red/envelope.svg",
+        "status": {
+            "x": 180,
+            "y": 40,
+            "wires": [
+                {
+                    "id": "65756d177704f6db",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "a1c305f263109d7c",
+        "type": "subflow",
+        "name": "Send Mail If In List",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 240,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "52f9e7241b7cc065"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#C7E9C0",
+        "icon": "node-red/envelope.svg",
+        "status": {
+            "x": 380,
+            "y": 100,
+            "wires": [
+                {
+                    "id": "ef3061f018db2e8c",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "d39cdfe2fe653489",
+        "type": "subflow",
+        "name": "Send Telegram to All",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "81346dc54a7049fd"
+                    },
+                    {
+                        "id": "6e424c10df5c7ea6"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#FFCC66",
+        "icon": "node-red-contrib-telegrambot/telegram.png",
+        "status": {
+            "x": 120,
+            "y": 60,
+            "wires": [
+                {
+                    "id": "29c258fdfe87956e",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "85e5a450a494a90d",
+        "type": "subflow",
+        "name": "Send Telegram if in List",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 380,
+                "wires": [
+                    {
+                        "id": "d1bd82d715156cc5"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#FFCC66",
+        "icon": "node-red-contrib-telegrambot/telegram.png",
+        "status": {
+            "x": 240,
+            "y": 200,
+            "wires": [
+                {
+                    "id": "cdbba5488fc2bf74",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "e739e8a7d19f1489",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "93f0dd26a2ee8dfb",
+        "type": "MySQLdatabase",
+        "name": "SensorDB",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "sensordb",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "f685b7769e41c295",
+        "type": "telegram bot",
+        "botname": "Lichtschranke",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "71511d458f85aac2",
+        "type": "semaphore-config",
+        "z": "927f3f4276b40643",
+        "name": "Get-SensorID-Semaphore",
+        "capacity": "1"
+    },
+    {
+        "id": "851a25f06921bf47",
+        "type": "semaphore-config",
+        "z": "7bde532f6cd579f2",
+        "name": "Send-EMails-Mutex",
+        "capacity": "1"
+    },
+    {
+        "id": "a81c7a5225f2e141",
+        "type": "semaphore-config",
+        "z": "d39cdfe2fe653489",
+        "name": "send-telegram",
+        "capacity": "1"
+    },
+    {
+        "id": "149c0fcbd22de34c",
+        "type": "MySQLdatabase",
+        "z": "927f3f4276b40643",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "sensordb",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "51dab9d854543187",
+        "type": "mqtt in",
+        "z": "7129d7f73a104082",
+        "d": true,
+        "name": "",
+        "topic": "/kuechentest",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e739e8a7d19f1489",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 130,
+        "y": 460,
+        "wires": [
+            [
+                "e8ff3d3e7774f70c",
+                "9a2d38e22bbef860"
+            ]
+        ]
+    },
+    {
+        "id": "e8ff3d3e7774f70c",
+        "type": "switch",
+        "z": "7129d7f73a104082",
+        "name": "if (ping)",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 380,
+        "y": 460,
+        "wires": [
+            [
+                "bd7319331b75cd91"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9a2d38e22bbef860",
+        "type": "debug",
+        "z": "7129d7f73a104082",
+        "name": "Incoming",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "bd7319331b75cd91",
+        "type": "function",
+        "z": "7129d7f73a104082",
+        "name": "message to send",
+        "func": "let payload = {\"chatId\":1234,\n\"messageId\":2,\"type\":\"message\",\n\"content\":\"ping!\"};\n\nreturn {payload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 460,
+        "wires": [
+            [
+                "9d046e34607c01d7",
+                "04d3e4faec4ad990"
+            ]
+        ]
+    },
+    {
+        "id": "04d3e4faec4ad990",
+        "type": "debug",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7ef41582e80ef743",
+        "type": "debug",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a76e76d651853319",
+        "type": "function",
+        "z": "7129d7f73a104082",
+        "name": "message to send",
+        "func": "let payload = {\"chatId\":1234,\n\"messageId\":2,\n\"type\":\"message\",\n\"content\":\"10 Minuten kein ping!\"};\n\nreturn {payload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 580,
+        "wires": [
+            [
+                "9c56797a3fde4703"
+            ]
+        ]
+    },
+    {
+        "id": "74f903b7e5577a3c",
+        "type": "inject",
+        "z": "7129d7f73a104082",
+        "d": true,
+        "name": "message come",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "pi",
+        "payloadType": "str",
+        "x": 140,
+        "y": 760,
+        "wires": [
+            [
+                "0aadd5526643f631",
+                "0afc0fffed9e554c",
+                "6cc4827fb524e08f"
+            ]
+        ]
+    },
+    {
+        "id": "0aadd5526643f631",
+        "type": "delay",
+        "z": "7129d7f73a104082",
+        "name": "ping 1msg/10min",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 450,
+        "y": 680,
+        "wires": [
+            [
+                "325892eef8da1c9a"
+            ]
+        ]
+    },
+    {
+        "id": "325892eef8da1c9a",
+        "type": "switch",
+        "z": "7129d7f73a104082",
+        "name": "if ping",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 660,
+        "wires": [
+            [],
+            [
+                "8947202907d9b105"
+            ]
+        ]
+    },
+    {
+        "id": "8947202907d9b105",
+        "type": "change",
+        "z": "7129d7f73a104082",
+        "name": "kein ping",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "10 Minuten kein ping!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 660,
+        "wires": [
+            [
+                "d071797241676d67",
+                "a76e76d651853319"
+            ]
+        ]
+    },
+    {
+        "id": "0afc0fffed9e554c",
+        "type": "delay",
+        "z": "7129d7f73a104082",
+        "name": "ping 1msg/2h",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 440,
+        "y": 720,
+        "wires": [
+            [
+                "b12bd4bfeadbf427"
+            ]
+        ]
+    },
+    {
+        "id": "3533d1fd565acba7",
+        "type": "change",
+        "z": "7129d7f73a104082",
+        "name": "Leere Batterie",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Leere Batterie!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 720,
+        "wires": [
+            [
+                "5784c33807943b2a",
+                "f1a204efc35401da"
+            ]
+        ]
+    },
+    {
+        "id": "6cc4827fb524e08f",
+        "type": "delay",
+        "z": "7129d7f73a104082",
+        "name": "Tür benutzt 1msg/8h",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "8",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 460,
+        "y": 780,
+        "wires": [
+            [
+                "7f5e48e9a58ac5ff"
+            ]
+        ]
+    },
+    {
+        "id": "7f5e48e9a58ac5ff",
+        "type": "switch",
+        "z": "7129d7f73a104082",
+        "name": "if Tür",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "Tür",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 780,
+        "wires": [
+            [
+                "ef69fc62e0a432b8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ef69fc62e0a432b8",
+        "type": "change",
+        "z": "7129d7f73a104082",
+        "name": "Küche nicht benutzt",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Habe die Küche seit 8 Stunden nicht mehr betreten!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 780,
+        "wires": [
+            [
+                "ae195e9dc402422b",
+                "e77adff0f8421931"
+            ]
+        ]
+    },
+    {
+        "id": "d071797241676d67",
+        "type": "debug",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b12bd4bfeadbf427",
+        "type": "switch",
+        "z": "7129d7f73a104082",
+        "name": "if ping",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 720,
+        "wires": [
+            [],
+            [
+                "3533d1fd565acba7"
+            ]
+        ]
+    },
+    {
+        "id": "5784c33807943b2a",
+        "type": "function",
+        "z": "7129d7f73a104082",
+        "name": "message to send",
+        "func": "let payload = {\"chatId\":1234,\n\"messageId\":2,\n\"type\":\"message\",\n\"content\":\"Leere Batterie!\"};\n\nreturn {payload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1270,
+        "y": 700,
+        "wires": [
+            [
+                "da4ffe7e9ef1a748"
+            ]
+        ]
+    },
+    {
+        "id": "f1a204efc35401da",
+        "type": "debug",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "ae195e9dc402422b",
+        "type": "function",
+        "z": "7129d7f73a104082",
+        "name": "message to send",
+        "func": "let payload = {\"chatId\":1234,\n\"messageId\":2,\n\"type\":\"message\",\n\"content\":\"Habe die Küche seit 8 Stunden nicht mehr betreten!\"};\n\nreturn {payload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 800,
+        "wires": [
+            [
+                "d03057169af39251"
+            ]
+        ]
+    },
+    {
+        "id": "e77adff0f8421931",
+        "type": "debug",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "f7913f68c1d53ce9",
+        "type": "telegram receiver",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 200,
+        "y": 100,
+        "wires": [
+            [
+                "7ef41582e80ef743",
+                "cc5b7a10a60fb972"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9d046e34607c01d7",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c56797a3fde4703",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1500,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "da4ffe7e9ef1a748",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1500,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d03057169af39251",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1520,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "de5533cbf372012f",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 2880,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6cdb56badf653dbf",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 2880,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "965941e9d4e57168",
+        "type": "telegram sender",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 2840,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "932176aef758d754",
+        "type": "inject",
+        "z": "1cbbac64aa4cf17a",
+        "name": "TestPings",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ABCBADASD",
+        "payload": "[44, \"1603-12-24 12:42:42\", \"TestPing\"]",
+        "payloadType": "json",
+        "x": 1880,
+        "y": 320,
+        "wires": [
+            [
+                "57d8cf3f95300de7"
+            ]
+        ]
+    },
+    {
+        "id": "57d8cf3f95300de7",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `pings` (`Sensor`, `Timestamp`, `Status`) VALUES(?, ?, ?)",
+        "output": "str",
+        "x": 1870,
+        "y": 380,
+        "wires": [
+            [
+                "63381df634463c87"
+            ]
+        ]
+    },
+    {
+        "id": "d759dbf4b072e88d",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `schranken-unterbrechungen` (`Sensor`, `Timestamp`, `Value`) VALUES(?, ?, ?)",
+        "output": "str",
+        "x": 1790,
+        "y": 560,
+        "wires": [
+            [
+                "0f2c78362d151fc7"
+            ]
+        ]
+    },
+    {
+        "id": "0f2c78362d151fc7",
+        "type": "mysql",
+        "z": "1cbbac64aa4cf17a",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1980,
+        "y": 560,
+        "wires": [
+            [
+                "5c45381aeb12fccb"
+            ]
+        ]
+    },
+    {
+        "id": "bd1f6415bae073a2",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "DB ERROR",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2330,
+        "y": 520,
+        "wires": [],
+        "icon": "font-awesome/fa-warning"
+    },
+    {
+        "id": "5c45381aeb12fccb",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "property": "payload.affectedRows",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2170,
+        "y": 560,
+        "wires": [
+            [
+                "bd1f6415bae073a2"
+            ],
+            [
+                "7a81a32a670d3bb5"
+            ]
+        ]
+    },
+    {
+        "id": "7a81a32a670d3bb5",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Success",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "\"Success\"",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2320,
+        "y": 600,
+        "wires": [],
+        "icon": "font-awesome/fa-check"
+    },
+    {
+        "id": "5d25e29f8643b22e",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Incoming",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "8885a63d673e99dd",
+        "type": "mqtt in",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "topic": "ttgo2/ping",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e739e8a7d19f1489",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 280,
+        "y": 580,
+        "wires": [
+            [
+                "75b04e5692e1dbc1"
+            ]
+        ]
+    },
+    {
+        "id": "a768fe806a010821",
+        "type": "json",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 730,
+        "y": 580,
+        "wires": [
+            [
+                "5d25e29f8643b22e",
+                "986c8dfb3384046d"
+            ]
+        ]
+    },
+    {
+        "id": "538245efcd8edca4",
+        "type": "mqtt in",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "topic": "ttgo2",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e739e8a7d19f1489",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 510,
+        "y": 520,
+        "wires": [
+            [
+                "a768fe806a010821"
+            ]
+        ]
+    },
+    {
+        "id": "986c8dfb3384046d",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "msg-type",
+        "property": "payload.msg-type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Aktivitaet",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "lora",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Triangulation",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 5,
+        "x": 880,
+        "y": 580,
+        "wires": [
+            [
+                "1d81729b402f6491"
+            ],
+            [
+                "58d293cdcae11571"
+            ],
+            [
+                "3c3e050530e3c69e"
+            ],
+            [
+                "7281400dcc9a805b"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0f69284d12b98f53",
+        "type": "function",
+        "z": "cddb446611f4a3c2",
+        "name": "ToArray",
+        "func": "var pl = [msg.payload];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 200,
+        "wires": [
+            [
+                "9be38db474deaddf"
+            ]
+        ]
+    },
+    {
+        "id": "9be38db474deaddf",
+        "type": "template",
+        "z": "cddb446611f4a3c2",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT *\nFROM `sensoren` \nWHERE `ID`= ?;",
+        "output": "str",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "950480ccc6bd825f"
+            ]
+        ]
+    },
+    {
+        "id": "950480ccc6bd825f",
+        "type": "mysql",
+        "z": "cddb446611f4a3c2",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 560,
+        "y": 200,
+        "wires": [
+            [
+                "d387923bc5e7b8d1"
+            ]
+        ]
+    },
+    {
+        "id": "d387923bc5e7b8d1",
+        "type": "switch",
+        "z": "cddb446611f4a3c2",
+        "name": "if exists",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 760,
+        "y": 200,
+        "wires": [
+            [
+                "f6c9dca85953d5e5"
+            ]
+        ]
+    },
+    {
+        "id": "f6c9dca85953d5e5",
+        "type": "change",
+        "z": "cddb446611f4a3c2",
+        "name": "GetFirst | Delete Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0]",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "topic",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbea67a2e36b9eb9",
+        "type": "comment",
+        "z": "cddb446611f4a3c2",
+        "name": "Param: payload=Sensor.ID",
+        "info": "",
+        "x": 130,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "713bc0230dfe0135",
+        "type": "comment",
+        "z": "cddb446611f4a3c2",
+        "name": "Return: payload=SensorInfo",
+        "info": "payload.ID: int\npayload.Identifier: string\npayload.DisplayName: string\npayload.Type: string",
+        "x": 1080,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "301d89510a3a6ecd",
+        "type": "change",
+        "z": "927f3f4276b40643",
+        "name": "Copy Payload | Get Identifier",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload-copy",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.identifier",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 240,
+        "wires": [
+            [
+                "e27b964ac55a7668"
+            ]
+        ]
+    },
+    {
+        "id": "e27b964ac55a7668",
+        "type": "function",
+        "z": "927f3f4276b40643",
+        "name": "ToArray",
+        "func": "var pl = [msg.payload];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 240,
+        "wires": [
+            [
+                "8845a564b18aa03f"
+            ]
+        ]
+    },
+    {
+        "id": "3b364bd467957fd9",
+        "type": "inject",
+        "z": "927f3f4276b40643",
+        "name": "TestNewSensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AbCdEfG12312",
+        "payloadType": "str",
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "b1df5ea58975902d"
+            ]
+        ]
+    },
+    {
+        "id": "ba216a7adadb99c2",
+        "type": "mysql",
+        "z": "927f3f4276b40643",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1120,
+        "y": 240,
+        "wires": [
+            [
+                "50683958596c13aa"
+            ]
+        ]
+    },
+    {
+        "id": "50683958596c13aa",
+        "type": "switch",
+        "z": "927f3f4276b40643",
+        "name": "If exists",
+        "property": "payload[0][\"ID\"]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "number",
+                "vt": "number"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1320,
+        "y": 240,
+        "wires": [
+            [
+                "613aa762c1c0dadc",
+                "a7456aae28892ba5"
+            ],
+            [
+                "f1faec9706fb4f7d",
+                "632d008e24a72a59"
+            ]
+        ]
+    },
+    {
+        "id": "613aa762c1c0dadc",
+        "type": "change",
+        "z": "927f3f4276b40643",
+        "name": "Format",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0][\"ID\"]",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "sensor",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 140,
+        "wires": [
+            [
+                "6622fecc7db10fde"
+            ]
+        ]
+    },
+    {
+        "id": "f1faec9706fb4f7d",
+        "type": "function",
+        "z": "927f3f4276b40643",
+        "name": "ToArray",
+        "func": "var pl = [msg[\"payload-copy\"].identifier, \"New-Device\", msg[\"payload-copy\"][\"device-type\"]];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1480,
+        "y": 260,
+        "wires": [
+            [
+                "f38c91cbfa4d76b9"
+            ]
+        ]
+    },
+    {
+        "id": "f38c91cbfa4d76b9",
+        "type": "template",
+        "z": "927f3f4276b40643",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `sensoren` \n(`Identifier`, `DisplayName`, `Type`) \nVALUES(?, ?, ?)",
+        "output": "str",
+        "x": 1650,
+        "y": 260,
+        "wires": [
+            [
+                "c783030be7b3f618"
+            ]
+        ]
+    },
+    {
+        "id": "c783030be7b3f618",
+        "type": "mysql",
+        "z": "927f3f4276b40643",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Insert-Query",
+        "x": 1860,
+        "y": 260,
+        "wires": [
+            [
+                "410c183406c7cbb7"
+            ]
+        ]
+    },
+    {
+        "id": "410c183406c7cbb7",
+        "type": "switch",
+        "z": "927f3f4276b40643",
+        "name": "",
+        "property": "payload.affectedRows",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2030,
+        "y": 260,
+        "wires": [
+            [
+                "9b276fba2bde1fea",
+                "09b18456779645d6"
+            ],
+            [
+                "a229fe11b75a6a96"
+            ]
+        ]
+    },
+    {
+        "id": "9b276fba2bde1fea",
+        "type": "change",
+        "z": "927f3f4276b40643",
+        "name": "Format",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.insertId",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "sensor",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "payload-copy",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2200,
+        "y": 220,
+        "wires": [
+            [
+                "6622fecc7db10fde"
+            ]
+        ]
+    },
+    {
+        "id": "09b18456779645d6",
+        "type": "debug",
+        "z": "927f3f4276b40643",
+        "name": "Success",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "\"Added Sensor\"",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2200,
+        "y": 260,
+        "wires": [],
+        "icon": "font-awesome/fa-check"
+    },
+    {
+        "id": "a229fe11b75a6a96",
+        "type": "debug",
+        "z": "927f3f4276b40643",
+        "name": "DB ERROR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2210,
+        "y": 300,
+        "wires": [],
+        "icon": "font-awesome/fa-warning"
+    },
+    {
+        "id": "2feeb91b16753693",
+        "type": "comment",
+        "z": "927f3f4276b40643",
+        "name": "Get Sensor ID from DB and Create If Not Exists",
+        "info": "SELECT ID FROM sensoren WHERE Identifier = msg-Identifier.\n\nif not null: return ID\n\nIf null:\nINSERT INTO sensoren (\"Placeholder-Name\", \"Placeholder-Type\", msg-Identifier)\n\nreturn lastInsert.ID",
+        "x": 360,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "8845a564b18aa03f",
+        "type": "template",
+        "z": "927f3f4276b40643",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT `ID`\nFROM `sensoren` \nWHERE `Identifier`= ?;",
+        "output": "str",
+        "x": 930,
+        "y": 240,
+        "wires": [
+            [
+                "ba216a7adadb99c2"
+            ]
+        ]
+    },
+    {
+        "id": "71c2f7e06a62962d",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "If status != ok",
+        "property": "status",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "ok",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 1300,
+        "y": 120,
+        "wires": [
+            [
+                "1e2c0bcaaa844493"
+            ]
+        ]
+    },
+    {
+        "id": "58042e6a5902a818",
+        "type": "comment",
+        "z": "927f3f4276b40643",
+        "name": "Param: Payload with payload.identifier, payload.device-type",
+        "info": "",
+        "x": 390,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ee36b8362ed4a60e",
+        "type": "comment",
+        "z": "927f3f4276b40643",
+        "name": "Returns: topic=sensor; payload=sensorID",
+        "info": "",
+        "x": 340,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d8b5ad0b137c170b",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "E-Mail Text",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Sensor {{payload.DisplayName}} \nvom Typ {{payload.Type}}\nhat den Status {{payload-original.value}}.\n\nViele Grüße,  \nNode-Red",
+        "output": "str",
+        "x": 2230,
+        "y": 120,
+        "wires": [
+            [
+                "e49bfed4f7c77996"
+            ]
+        ]
+    },
+    {
+        "id": "1c300f95d6afd2a3",
+        "type": "subflow:927f3f4276b40643",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 1710,
+        "y": 120,
+        "wires": [
+            [
+                "2b61001a650a37df"
+            ]
+        ]
+    },
+    {
+        "id": "2b61001a650a37df",
+        "type": "subflow:cddb446611f4a3c2",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 1940,
+        "y": 120,
+        "wires": [
+            [
+                "7dfae92261765f23"
+            ]
+        ]
+    },
+    {
+        "id": "b1df5ea58975902d",
+        "type": "semaphore-take",
+        "z": "927f3f4276b40643",
+        "config": "71511d458f85aac2",
+        "name": "Enter",
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "301d89510a3a6ecd"
+            ]
+        ]
+    },
+    {
+        "id": "6622fecc7db10fde",
+        "type": "semaphore-leave",
+        "z": "927f3f4276b40643",
+        "config": "71511d458f85aac2",
+        "name": "Leave",
+        "x": 2370,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ccb58664dc01b89a",
+        "type": "catch",
+        "z": "927f3f4276b40643",
+        "name": "",
+        "scope": [
+            "ba216a7adadb99c2",
+            "c783030be7b3f618",
+            "301d89510a3a6ecd",
+            "e27b964ac55a7668",
+            "8845a564b18aa03f",
+            "50683958596c13aa",
+            "613aa762c1c0dadc",
+            "75c4bc127c5f7316",
+            "8a45bed172cc13f0",
+            "46d5fe31c639b856",
+            "f1faec9706fb4f7d",
+            "f38c91cbfa4d76b9",
+            "d60cf9511c59d125",
+            "9b276fba2bde1fea",
+            "410c183406c7cbb7",
+            "09b18456779645d6",
+            "e5cdf00d92cae967",
+            "a229fe11b75a6a96"
+        ],
+        "uncaught": false,
+        "x": 1250,
+        "y": 460,
+        "wires": [
+            [
+                "8f5b1a6abeed5779"
+            ]
+        ]
+    },
+    {
+        "id": "8f5b1a6abeed5779",
+        "type": "semaphore-leave",
+        "z": "927f3f4276b40643",
+        "config": "71511d458f85aac2",
+        "name": "Leave",
+        "x": 1390,
+        "y": 460,
+        "wires": [
+            [
+                "79e48457c10bb51d"
+            ]
+        ]
+    },
+    {
+        "id": "e49bfed4f7c77996",
+        "type": "rbe",
+        "z": "1cbbac64aa4cf17a",
+        "name": "No Duplicates",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 2400,
+        "y": 120,
+        "wires": [
+            [
+                "ea78d94e3b7853ce",
+                "d2859fb256f8791c"
+            ]
+        ]
+    },
+    {
+        "id": "79e48457c10bb51d",
+        "type": "function",
+        "z": "927f3f4276b40643",
+        "name": "Throw Error",
+        "func": "throw msg.error;",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d9be1e38b5fbd484",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Problem?: Blockiert bis Wertänderung",
+        "info": "Heißt, es können nie 2 Nachrichten mit dem selben Inhalt hintereinander verschickt werden, auch wenn dazwischen Tage liegen.\n\nVielleicht lieber irgendwie anders filtern.\n\n--> Können wir das zeitlich filtern? Also keine Dupikate innerhalb von 2h oder so? ",
+        "x": 2390,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5686ccb38c6ca0f3",
+        "type": "mysql",
+        "z": "7bde532f6cd579f2",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 520,
+        "y": 300,
+        "wires": [
+            [
+                "a659ec92f4b61cf4"
+            ]
+        ]
+    },
+    {
+        "id": "4650f4afb62d196c",
+        "type": "change",
+        "z": "7bde532f6cd579f2",
+        "name": "Query: Get all E-Mails",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SELECT `Address` FROM `email-recipients`;",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "5686ccb38c6ca0f3"
+            ]
+        ]
+    },
+    {
+        "id": "a659ec92f4b61cf4",
+        "type": "function",
+        "z": "7bde532f6cd579f2",
+        "name": "Shorten",
+        "func": "if (msg.payload == null) node.error(\"No Results!\", msg);\n\nmsg.payload = [].concat(msg.payload ?? []);\n\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    msg.payload[i] = msg.payload[i].Address;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 300,
+        "wires": [
+            [
+                "7efed8182f9aa764"
+            ]
+        ]
+    },
+    {
+        "id": "7efed8182f9aa764",
+        "type": "change",
+        "z": "7bde532f6cd579f2",
+        "name": "Set Recipients",
+        "rules": [
+            {
+                "t": "set",
+                "p": "recipients",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "topic",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 300,
+        "wires": [
+            [
+                "8cb06eec27d0acb1"
+            ]
+        ]
+    },
+    {
+        "id": "a650f35eafa9790e",
+        "type": "semaphore-take",
+        "z": "7bde532f6cd579f2",
+        "config": "851a25f06921bf47",
+        "name": "Enter",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "4650f4afb62d196c",
+                "13066fde0be85852"
+            ]
+        ]
+    },
+    {
+        "id": "f4a56fa3a6d31a97",
+        "type": "semaphore-leave",
+        "z": "7bde532f6cd579f2",
+        "config": "851a25f06921bf47",
+        "name": "Leave",
+        "x": 1330,
+        "y": 160,
+        "wires": [
+            [
+                "17990e6c2ad2319c"
+            ]
+        ]
+    },
+    {
+        "id": "8cb06eec27d0acb1",
+        "type": "join",
+        "z": "7bde532f6cd579f2",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1030,
+        "y": 160,
+        "wires": [
+            [
+                "dd348ff3cd48a39c"
+            ]
+        ]
+    },
+    {
+        "id": "999a3f7d31b877f1",
+        "type": "catch",
+        "z": "7bde532f6cd579f2",
+        "name": "",
+        "scope": [
+            "5686ccb38c6ca0f3",
+            "4650f4afb62d196c",
+            "a659ec92f4b61cf4",
+            "7efed8182f9aa764",
+            "8cb06eec27d0acb1",
+            "dd348ff3cd48a39c",
+            "13066fde0be85852"
+        ],
+        "uncaught": false,
+        "x": 350,
+        "y": 500,
+        "wires": [
+            [
+                "4e9f1e6450a99ff4"
+            ]
+        ]
+    },
+    {
+        "id": "4e9f1e6450a99ff4",
+        "type": "semaphore-leave",
+        "z": "7bde532f6cd579f2",
+        "config": "851a25f06921bf47",
+        "name": "Leave",
+        "x": 490,
+        "y": 500,
+        "wires": [
+            [
+                "10fffa5f07775ad3",
+                "9efbcd1a401dbf0d"
+            ]
+        ]
+    },
+    {
+        "id": "dd348ff3cd48a39c",
+        "type": "change",
+        "z": "7bde532f6cd579f2",
+        "name": "Format",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 160,
+        "wires": [
+            [
+                "f4a56fa3a6d31a97",
+                "709aa7edc06cbfeb"
+            ]
+        ]
+    },
+    {
+        "id": "10fffa5f07775ad3",
+        "type": "function",
+        "z": "7bde532f6cd579f2",
+        "name": "Throw Error",
+        "func": "throw msg.error;",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "621a1b153a52cbcc",
+        "type": "comment",
+        "z": "7bde532f6cd579f2",
+        "name": "Params: payload = Mail-Text; topic = Betreff",
+        "info": "",
+        "x": 190,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ea78d94e3b7853ce",
+        "type": "subflow:7bde532f6cd579f2",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 2600,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "709aa7edc06cbfeb",
+        "type": "function",
+        "z": "7bde532f6cd579f2",
+        "name": "Status",
+        "func": "var count = msg.recipients.length;\n\nmsg.payload = ({fill: \"green\", text: count.toString() + \" Mails sent.\"});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1330,
+        "y": 200,
+        "wires": [
+            [
+                "0d97b1a325c2e134"
+            ]
+        ]
+    },
+    {
+        "id": "9efbcd1a401dbf0d",
+        "type": "function",
+        "z": "7bde532f6cd579f2",
+        "name": "Status",
+        "func": "msg.payload = ({fill: \"red\", text: msg.error.message});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 460,
+        "wires": [
+            [
+                "5f9d345053b84680"
+            ]
+        ]
+    },
+    {
+        "id": "0d97b1a325c2e134",
+        "type": "link out",
+        "z": "7bde532f6cd579f2",
+        "name": "Out-Status",
+        "links": [
+            "65756d177704f6db"
+        ],
+        "x": 1415,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "65756d177704f6db",
+        "type": "link in",
+        "z": "7bde532f6cd579f2",
+        "name": "In-Status",
+        "links": [
+            "0d97b1a325c2e134",
+            "5f9d345053b84680"
+        ],
+        "x": 115,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f9d345053b84680",
+        "type": "link out",
+        "z": "7bde532f6cd579f2",
+        "name": "Out-Status",
+        "links": [
+            "65756d177704f6db"
+        ],
+        "x": 715,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7c05930e8c280ddc",
+        "type": "e-mail in",
+        "z": "f55c06f1975f7955",
+        "name": "Incoming E-Mails",
+        "protocol": "IMAP",
+        "server": "imap.gmail.com",
+        "useSSL": true,
+        "autotls": "never",
+        "port": "993",
+        "box": "INBOX",
+        "disposition": "Read",
+        "criteria": "UNSEEN",
+        "repeat": "300",
+        "fetch": "auto",
+        "inputs": 0,
+        "x": 240,
+        "y": 220,
+        "wires": [
+            [
+                "57596d828adc76df"
+            ]
+        ]
+    },
+    {
+        "id": "57596d828adc76df",
+        "type": "switch",
+        "z": "f55c06f1975f7955",
+        "name": "Betreff-Filter",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Unsubscribe",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Status",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 420,
+        "y": 220,
+        "wires": [
+            [
+                "af8247691193d31f"
+            ],
+            [
+                "1be924252a7de502"
+            ]
+        ]
+    },
+    {
+        "id": "af8247691193d31f",
+        "type": "change",
+        "z": "f55c06f1975f7955",
+        "name": "Only keep Sender",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "from",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "from",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "html",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "header",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "date",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [
+                "5414b147971aeb32"
+            ]
+        ]
+    },
+    {
+        "id": "0db568019b0acbf5",
+        "type": "mysql",
+        "z": "f55c06f1975f7955",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1160,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b1e61168898e998",
+        "type": "template",
+        "z": "f55c06f1975f7955",
+        "name": "Add Delete-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "DELETE \nFROM `email-recipients` \nWHERE `Address` = ?;",
+        "output": "str",
+        "x": 970,
+        "y": 200,
+        "wires": [
+            [
+                "0db568019b0acbf5"
+            ]
+        ]
+    },
+    {
+        "id": "522694347594e147",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Beaconauswahl",
+        "property": "payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "c1:66:8f:34:4f:b9",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 1300,
+        "wires": [
+            [
+                "f1d65a7e824dcf76"
+            ]
+        ]
+    },
+    {
+        "id": "6a75f1031c8e9954",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToArray",
+        "func": "var pl = [0, msg.payload.Time, msg.payload.rssi];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 1300,
+        "wires": [
+            [
+                "8f22d7ff4f1b1f75"
+            ]
+        ]
+    },
+    {
+        "id": "8f22d7ff4f1b1f75",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `rssi` (`Sensor`, `Timestamp`, `Value`) VALUES(?, ?, ?)",
+        "output": "str",
+        "x": 1430,
+        "y": 1300,
+        "wires": [
+            [
+                "4ac1ffe71a3182e6"
+            ]
+        ]
+    },
+    {
+        "id": "5414b147971aeb32",
+        "type": "function",
+        "z": "f55c06f1975f7955",
+        "name": "ToArray",
+        "func": "msg.payload = [msg.payload];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 200,
+        "wires": [
+            [
+                "6b1e61168898e998"
+            ]
+        ]
+    },
+    {
+        "id": "3a92370020b05091",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToDo DB",
+        "info": "An dieser Stelle können wir nicht feststellen, ob der Sensor nicht da ist. \nWenn der letzte DB-Eintrag 5min (oder so) her ist, müsste eine Benachrichtigung kommen, dass der Mensch nicht zuhause ist, das wiederrum kann dann x Stunden lang andere Benachrichtigungen unterdrücken",
+        "x": 1475,
+        "y": 1257.3333129882812,
+        "wires": []
+    },
+    {
+        "id": "17990e6c2ad2319c",
+        "type": "template",
+        "z": "7bde532f6cd579f2",
+        "name": "E-Mail Template",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n  <!--Nach Tutorial von: https://webdesign.tutsplus.com/de/articles/creating-a-simple-responsive-html-email--webdesign-12978-->\n  <!--Styled Table von: https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l-->\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <title></title>\n\t<!--[if mso]>\n  <style>\n    table {border-collapse:collapse;border-spacing:0;border:none;margin:0;}\n    div, td {padding:0;}\n    div {margin:0 !important;}\n\t</style>\n  <noscript>\n    <xml>\n      <o:OfficeDocumentSettings>\n        <o:PixelsPerInch>96</o:PixelsPerInch>\n      </o:OfficeDocumentSettings>\n    </xml>\n  </noscript>\n  <![endif]-->\n  <style>\n    table, td, div, h1, p {\n      font-family: Arial, sans-serif;\n    }\n    @media screen and (max-width: 530px) {\n      .unsub {\n        display: block;\n        padding: 8px;\n        margin-top: 14px;\n        border-radius: 6px;\n        background-color: #555555;\n        text-decoration: none !important;\n        font-weight: bold;\n      }\n      .col-lge {\n        max-width: 100% !important;\n      }\n    }\n    @media screen and (min-width: 531px) {\n      .col-sml {\n        max-width: 27% !important;\n      }\n      .col-lge {\n        max-width: 73% !important;\n      }\n    }\n    \n    .styled-table {\n    border-collapse: collapse;\n    margin: 25px 0;\n    font-size: 0.9em;\n    font-family: sans-serif;\n    min-width: 400px;\n    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n    }\n    .styled-table thead tr {\n    background-color: #009879;\n    color: #ffffff;\n    text-align: left;\n    }\n    .styled-table th,\n    .styled-table td {\n        padding: 12px 15px;\n    }\n    .styled-table tbody tr {\n    border-bottom: 1px solid #dddddd;\n    }\n    \n    .styled-table tbody tr:nth-of-type(even) {\n        background-color: #f3f3f3;\n    }\n    \n    .styled-table tbody tr:last-of-type {\n        border-bottom: 2px solid #009879;\n    }\n\n    .nice-btn {\n      margin: 25px 0;\n      padding: 12px 15px;\n      background-color: #009879;\n      color: #ffffff;\n      text-align: center;\n      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n    }\n\n  </style>\n</head>\n<body style=\"margin:0;padding:0;word-spacing:normal;background-color:#C6D4E2;\">\n  <div role=\"article\" aria-roledescription=\"email\" lang=\"en\" style=\"text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#C6D4E2;\">\n    <table role=\"presentation\" style=\"width:100%;border:none;border-spacing:0;\">\n      <tr>\n        <td align=\"center\" style=\"padding:0;\">\n          <!--[if mso]>\n          <table role=\"presentation\" align=\"center\" style=\"width:600px;\">\n          <tr>\n          <td>\n          <![endif]-->\n          <table role=\"presentation\" style=\"width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;\">\n            <tr> <!--Der Header-->\n              <td style=\"padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;\">\n                <a style=\"text-decoration:none;color:#ffffff;\">Aktivitätsüberwachung</a>\n              </td>\n            </tr>\n            <tr> <!--Der Container-->\n              <td style=\"padding:30px;background-color:#ffffff;\">\n                <h1 style=\"margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;text-align:center;\">\n                  {{topic}}\n                </h1>\n                <p style=\"margin:0;\">\n                  {{{payload}}}\n                </p>\n                <br/>\n                <div>\n                  <a href=\"mailto:pp.aktivitaetsueberwachung@gmail.com?subject=Status\" class=\"nice-btn\">Aktuellen Status abfragen</a>\n                </div>\n              </td>\n            </tr>\n            <tr> <!--Der Footer-->\n              <td style=\"padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#cccccc;\">\n                <p style=\"margin:0;font-size:14px;line-height:20px;\">\n                  ☻ Senioren-Aktivitätsüberwachung 2021<br>\n                    <a class=\"unsub\" href=\"mailto:pp.aktivitaetsueberwachung@gmail.com?subject=Unsubscribe\" style=\"color:#cccccc;text-decoration:underline;\">Unsubscribe</a>\n                </p>\n              </td>\n            </tr>\n          </table>\n          <!--[if mso]>\n          </td>\n          </tr>\n          </table>\n          <![endif]-->\n        </td>\n      </tr>\n    </table>\n  </div>\n</body>\n</html>",
+        "output": "str",
+        "x": 1480,
+        "y": 160,
+        "wires": [
+            [
+                "a0b1afd4d8c5a9ca"
+            ]
+        ],
+        "icon": "node-red/parser-html.svg"
+    },
+    {
+        "id": "fd80158f0245830b",
+        "type": "e-mail",
+        "z": "7bde532f6cd579f2",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "",
+        "dname": "Send Mail",
+        "x": 1840,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a0b1afd4d8c5a9ca",
+        "type": "function",
+        "z": "7bde532f6cd579f2",
+        "name": "ForEach Recipient",
+        "func": "var recipients = msg.recipients;\nvar title = msg.topic;\nvar text = msg.payload;\n\nvar msgs = [];\n\nfor (var i = 0; i < recipients.length; i++)\n{\n    var newmsg = {};\n    newmsg.topic = title;\n    newmsg.to = recipients[i];\n    newmsg.payload = text;\n    \n    msgs.push(newmsg);\n}\n\nreturn [msgs];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1670,
+        "y": 160,
+        "wires": [
+            [
+                "fd80158f0245830b"
+            ]
+        ]
+    },
+    {
+        "id": "46d8a6e5b3b3c8cd",
+        "type": "comment",
+        "z": "7bde532f6cd579f2",
+        "name": "E-Mail Daten",
+        "info": "Nix",
+        "x": 1850,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1e2c0bcaaa844493",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Payload Kopie",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload-original",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1480,
+        "y": 120,
+        "wires": [
+            [
+                "1c300f95d6afd2a3"
+            ]
+        ]
+    },
+    {
+        "id": "7dfae92261765f23",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Betreff",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Sensor-Status: {{payload-original.value}}",
+        "output": "str",
+        "x": 2090,
+        "y": 120,
+        "wires": [
+            [
+                "d8b5ad0b137c170b"
+            ]
+        ]
+    },
+    {
+        "id": "56d2c28aa725eaad",
+        "type": "BLE Beacon Scanner",
+        "z": "1cbbac64aa4cf17a",
+        "d": true,
+        "name": "",
+        "x": 480,
+        "y": 1300,
+        "wires": [
+            [
+                "522694347594e147"
+            ]
+        ]
+    },
+    {
+        "id": "4ac1ffe71a3182e6",
+        "type": "mysql",
+        "z": "1cbbac64aa4cf17a",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1640,
+        "y": 1300,
+        "wires": [
+            [
+                "548b689e24487e62"
+            ]
+        ]
+    },
+    {
+        "id": "548b689e24487e62",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "property": "payload.affectedRows",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1850,
+        "y": 1300,
+        "wires": [
+            [
+                "cd923cae0e911fcd"
+            ],
+            [
+                "26650096b293157b"
+            ]
+        ]
+    },
+    {
+        "id": "cd923cae0e911fcd",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "DB ERROR",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2010,
+        "y": 1260,
+        "wires": [],
+        "icon": "font-awesome/fa-warning"
+    },
+    {
+        "id": "26650096b293157b",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Success",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "\"Success\"",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2000,
+        "y": 1340,
+        "wires": [],
+        "icon": "font-awesome/fa-check"
+    },
+    {
+        "id": "6adda1904e49cf35",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.Time",
+                "pt": "msg",
+                "to": "$now(\"[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]\", \"+0200\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 1300,
+        "wires": [
+            [
+                "6a75f1031c8e9954"
+            ]
+        ]
+    },
+    {
+        "id": "f8b74b36c08d5e52",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Ich bin raspberrypi.local",
+        "info": "",
+        "x": 320,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "0ffc4811066ca5d5",
+        "type": "inject",
+        "z": "29259d5b7bef6133",
+        "name": "Alle 30 Minuten",
+        "props": [],
+        "repeat": "1800",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 550,
+        "y": 340,
+        "wires": [
+            [
+                "e988531b467a3c3a"
+            ]
+        ]
+    },
+    {
+        "id": "e37023841c4a3eb3",
+        "type": "mysql",
+        "z": "29259d5b7bef6133",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 970,
+        "y": 340,
+        "wires": [
+            [
+                "12032dbe653a09e2",
+                "14e7bbc78c9db871"
+            ]
+        ]
+    },
+    {
+        "id": "e988531b467a3c3a",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT *\n    FROM (\n        SELECT `pings`.`Sensor` AS `ID`, MAX(`pings`.`Timestamp`) AS `Timestamp`, `pings`.`Status` AS `Status`\n        FROM `pings`\n        GROUP BY `pings`.`Sensor`\n        ) AS lastPingPerSensor\n    JOIN `sensoren` ON `lastPingPerSensor`.`ID` = `sensoren`.`ID`\n    WHERE `lastPingPerSensor`.`Timestamp` < (CONVERT_TZ(NOW(), 'SYSTEM', 'Europe/Berlin') - INTERVAL 30 MINUTE)\n    AND `lastPingPerSensor`.`Timestamp` > (CONVERT_TZ(NOW(), 'SYSTEM', 'Europe/Berlin') - INTERVAL 60 MINUTE)",
+        "output": "str",
+        "x": 780,
+        "y": 340,
+        "wires": [
+            [
+                "e37023841c4a3eb3"
+            ]
+        ]
+    },
+    {
+        "id": "0325bb8e62290bf2",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "SELECT-Erklärung",
+        "info": "Sensoren bei denen der letzte Ping zwischen 30 und 60 Minuten her ist.\n\nWenn das alle 30 Minuten überprüft wird, dann werden alle erwischt, aber keine Nachrichten doppelt versendet.\n\nAlternativ:\n    Zwischenspeichern der letzten überprüften ID.",
+        "x": 790,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "f633d99582e5ed1e",
+        "type": "switch",
+        "z": "29259d5b7bef6133",
+        "name": "If Exists",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1310,
+        "y": 340,
+        "wires": [
+            [
+                "f4a70266d1651a7f",
+                "36c6616624a60832"
+            ]
+        ]
+    },
+    {
+        "id": "f4a70266d1651a7f",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "Format Sensors",
+        "func": "var text = \"\";\n\n// Passt die Zeitzone jetzt??\n\nfor (var i = 0; i< msg.payload.length; i++)\n{\n    var sensor = msg.payload[i];\n    \n    text+=`\n    <tr>\n        <td>\n            ${sensor.Type}\n        </td>\n        <td>\n            ${sensor.DisplayName}\n        </td>\n        <td>\n            ${sensor.Timestamp.toLocaleString('de-DE', { timeZone: 'europe/Berlin' })}\n        </td>\n        <td>\n            ${sensor.Status}\n        </td>\n    </tr>\n    `;\n}\n\nmsg.payload = text;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1480,
+        "y": 340,
+        "wires": [
+            [
+                "e7da91c34887eb89"
+            ]
+        ]
+    },
+    {
+        "id": "e7da91c34887eb89",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hallo<br/>\nEinige Geräte sind nicht erreichbar:  \n\n<table class=\"styled-table\">\n    <thead>\n        <tr>\n            <th>\n                Name\n            </th>\n            <th>\n                Typ\n            </th>\n            <th>\n                Letzer Ping\n            </th>\n            <th>\n                Letzer Ping-Status\n            </th>\n        </tr>\n    </thead>\n    <tbody>\n        {{{payload}}}\n    </tbody>\n</table>\n\n<br/>\n<br/>\n\n\nViele Grüße,<br/>\nNode-Red",
+        "output": "str",
+        "x": 1650,
+        "y": 340,
+        "wires": [
+            [
+                "4875f3d3b13090c8"
+            ]
+        ]
+    },
+    {
+        "id": "4875f3d3b13090c8",
+        "type": "subflow:7bde532f6cd579f2",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "env": [],
+        "x": 1840,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "12032dbe653a09e2",
+        "type": "change",
+        "z": "29259d5b7bef6133",
+        "name": "Betreff",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Gerät Nicht Erreichbar",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 340,
+        "wires": [
+            [
+                "f633d99582e5ed1e"
+            ]
+        ]
+    },
+    {
+        "id": "14e7bbc78c9db871",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "DB-Results",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "8c461215a3510300",
+        "type": "join",
+        "z": "29259d5b7bef6133",
+        "name": "Wenn zuhause und Inaktiv",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "120",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1970,
+        "y": 740,
+        "wires": [
+            [
+                "e229e5d377784ebf",
+                "457777f83a5b138e"
+            ]
+        ]
+    },
+    {
+        "id": "1d4b30330e153585",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "Value=1",
+        "func": "msg.payload={value: 0}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1740,
+        "y": 780,
+        "wires": [
+            [
+                "8c461215a3510300"
+            ]
+        ]
+    },
+    {
+        "id": "86156dc9452a1bd3",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "Value=1",
+        "func": "msg.payload={value: 0}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1740,
+        "y": 700,
+        "wires": [
+            [
+                "8c461215a3510300"
+            ]
+        ]
+    },
+    {
+        "id": "e229e5d377784ebf",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Inaktiv+Anwesend?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2190,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "cfe2289bc5b1a8b2",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Inaktiv",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1510,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "ce88f11f79d389f0",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Aktiv",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1510,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "edbd4d04ea6b9580",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Abwesend",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "63669e47b125d04e",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Anwesend",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "5aef1168dae337b3",
+        "type": "inject",
+        "z": "29259d5b7bef6133",
+        "name": "Alle 15 Minuten",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "start",
+        "x": 470,
+        "y": 720,
+        "wires": [
+            [
+                "b77d0bb9501b19d2",
+                "f7abe5dac8745c7a"
+            ]
+        ]
+    },
+    {
+        "id": "8106b6197ca6e7ef",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "+status ok",
+        "info": "",
+        "x": 880,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "a860200ee5499f51",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Abfrage",
+        "info": "vgl. klappt nicht",
+        "x": 1250,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c952abd2bcdddf52",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT\n(\nSELECT COUNT(DISTINCT `Sensor`)\nFROM \n(\n    SELECT LEAST(`rssi1`, `rssi2`, `rssi3`) AS `MinValue`, (CASE LEAST(`rssi1`, `rssi2`, `rssi3`)\n            WHEN `rssi1` THEN '1' WHEN `rssi2` THEN '2' WHEN `rssi3` THEN '3' END) \n            AS 'Sensor' \n    FROM `triangulation`\n    WHERE `Timestamp` >= ?\n    ORDER BY `ID` DESC\n) AS `t1`\n) = 1 AS `allegleich`",
+        "output": "str",
+        "x": 1810,
+        "y": 1160,
+        "wires": [
+            [
+                "2cf1c2320f5837b7"
+            ]
+        ]
+    },
+    {
+        "id": "92902c9b7c617c74",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "-3h",
+        "func": "msg.starttime={now :new Date()-10800000}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1100,
+        "wires": [
+            [
+                "d1b650181462d1f4"
+            ]
+        ]
+    },
+    {
+        "id": "d1b650181462d1f4",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT Timestamp FROM `rssi` ORDER BY `ID` DESC LIMIT 1",
+        "output": "str",
+        "x": 890,
+        "y": 1100,
+        "wires": [
+            [
+                "a2850e5c7111f6c8"
+            ]
+        ]
+    },
+    {
+        "id": "2fcf1553304ffb8f",
+        "type": "inject",
+        "z": "29259d5b7bef6133",
+        "name": "Jede Minute",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "start",
+        "x": 580,
+        "y": 1100,
+        "wires": [
+            [
+                "92902c9b7c617c74"
+            ]
+        ]
+    },
+    {
+        "id": "a2850e5c7111f6c8",
+        "type": "mysql",
+        "z": "29259d5b7bef6133",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1080,
+        "y": 1100,
+        "wires": [
+            [
+                "703362ca2cc25ec2"
+            ]
+        ]
+    },
+    {
+        "id": "703362ca2cc25ec2",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "toDate",
+        "func": "msg.payload = Date.parse(msg.payload[0].Timestamp);\nmsg.payload = new Date(msg.payload)-3600000\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 1100,
+        "wires": [
+            [
+                "68974b2dc3c7a76a",
+                "50c3dc0669361705"
+            ]
+        ]
+    },
+    {
+        "id": "68974b2dc3c7a76a",
+        "type": "switch",
+        "z": "29259d5b7bef6133",
+        "name": "Abwesend?",
+        "property": "starttime.now",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "payload",
+                "vt": "msg"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1380,
+        "y": 1100,
+        "wires": [
+            [
+                "f0f5ce6bcabe4dd9"
+            ],
+            [
+                "3e13a211e47fed9e",
+                "94613570834772cf"
+            ]
+        ]
+    },
+    {
+        "id": "f0f5ce6bcabe4dd9",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Abwesend",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "472be102c9d9b096",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Vgl",
+        "info": "Bleibt der gleiche am weitesten weg?\n\nWie lange? Zahl in Query anpassen.\n",
+        "x": 1810,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "3e13a211e47fed9e",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Anwesend",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "50c3dc0669361705",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "RssiTbl",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "5f6b47323388ae80",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Wurde der Beacon bewegt (Triangulation) ?",
+        "info": "-> Zeit sinnvoll wählen. Wieder 3h?",
+        "x": 700,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "2cf1c2320f5837b7",
+        "type": "mysql",
+        "z": "29259d5b7bef6133",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 2000,
+        "y": 1160,
+        "wires": [
+            [
+                "80716c648364879d",
+                "2ecbd421663a1bbb"
+            ]
+        ]
+    },
+    {
+        "id": "2ecbd421663a1bbb",
+        "type": "switch",
+        "z": "29259d5b7bef6133",
+        "name": "Aktiv?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 2210,
+        "y": 1160,
+        "wires": [
+            [
+                "4385e12a27760804"
+            ],
+            [
+                "40c9d32b3aa4575d",
+                "a78125aaf3685447"
+            ]
+        ]
+    },
+    {
+        "id": "40c9d32b3aa4575d",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Inaktiv",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2350,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "4385e12a27760804",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Aktiv",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2350,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "1be924252a7de502",
+        "type": "change",
+        "z": "f55c06f1975f7955",
+        "name": "Only keep Sender",
+        "rules": [
+            {
+                "t": "set",
+                "p": "to",
+                "pt": "msg",
+                "to": "from",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "from",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "html",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "header",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "date",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 240,
+        "wires": [
+            [
+                "dc31a2df5e6e6a5a"
+            ]
+        ]
+    },
+    {
+        "id": "1bf7ea91e9f0d734",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `lora` (`Sensor`, `Timestamp`, `Value`) VALUES(?, ?, ?)",
+        "output": "str",
+        "x": 1830,
+        "y": 700,
+        "wires": [
+            [
+                "bbe1be68713875b5"
+            ]
+        ]
+    },
+    {
+        "id": "c4ee70476b1e93df",
+        "type": "comment",
+        "z": "a1c305f263109d7c",
+        "name": "Params: payload = Mail-Text; topic = Betreff; to = Recipient",
+        "info": "",
+        "x": 430,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ef3061f018db2e8c",
+        "type": "link in",
+        "z": "a1c305f263109d7c",
+        "name": "In-Status",
+        "links": [
+            "106faaa99db5f12a",
+            "aa7d8e26570a8ff3",
+            "b1ca3a943e7bdff6",
+            "bf13974c6f2c41f0"
+        ],
+        "x": 315,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3412588d5e33aaa4",
+        "type": "comment",
+        "z": "a1c305f263109d7c",
+        "name": "E-Mail Daten",
+        "info": "Nix",
+        "x": 1950,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "cd8e322cd9cec62b",
+        "type": "function",
+        "z": "a1c305f263109d7c",
+        "name": "ToArray",
+        "func": "msg.payload = [msg.payload];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 280,
+        "wires": [
+            [
+                "c958fa12f64dd088"
+            ]
+        ]
+    },
+    {
+        "id": "c958fa12f64dd088",
+        "type": "template",
+        "z": "a1c305f263109d7c",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT 1 \nFROM `email-recipients` \nWHERE `Address` = ?;",
+        "output": "str",
+        "x": 1000,
+        "y": 280,
+        "wires": [
+            [
+                "56a79398605a6ecc"
+            ]
+        ]
+    },
+    {
+        "id": "56a79398605a6ecc",
+        "type": "mysql",
+        "z": "a1c305f263109d7c",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1190,
+        "y": 280,
+        "wires": [
+            [
+                "a6568fe42820ddb0"
+            ]
+        ]
+    },
+    {
+        "id": "a6568fe42820ddb0",
+        "type": "switch",
+        "z": "a1c305f263109d7c",
+        "name": "If Exists",
+        "property": "payload[0][\"1\"]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1370,
+        "y": 280,
+        "wires": [
+            [
+                "80b5f3324c633055"
+            ],
+            [
+                "d582b36da0e226b1",
+                "af27f55398daaadd"
+            ]
+        ]
+    },
+    {
+        "id": "52f9e7241b7cc065",
+        "type": "function",
+        "z": "a1c305f263109d7c",
+        "name": "Default Payload+Topic If not exists",
+        "func": "if (!msg.hasOwnProperty(\"payload\"))\n{\n    msg.payload = \"null\";\n}\n\nif (!msg.hasOwnProperty(\"topic\"))\n{\n    msg.topic = \"null\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "24aadcce62d93c35"
+            ]
+        ]
+    },
+    {
+        "id": "80b5f3324c633055",
+        "type": "change",
+        "z": "a1c305f263109d7c",
+        "name": "Get Payload and Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "text",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "betreff",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1580,
+        "y": 260,
+        "wires": [
+            [
+                "3ff3d8ed84be0ae7"
+            ]
+        ]
+    },
+    {
+        "id": "3ff3d8ed84be0ae7",
+        "type": "template",
+        "z": "a1c305f263109d7c",
+        "name": "E-Mail Template",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n  <!--Nach Tutorial von: https://webdesign.tutsplus.com/de/articles/creating-a-simple-responsive-html-email--webdesign-12978-->\n  <!--Styled Table von: https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l-->\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <meta name=\"x-apple-disable-message-reformatting\">\n  <title></title>\n\t<!--[if mso]>\n  <style>\n    table {border-collapse:collapse;border-spacing:0;border:none;margin:0;}\n    div, td {padding:0;}\n    div {margin:0 !important;}\n\t</style>\n  <noscript>\n    <xml>\n      <o:OfficeDocumentSettings>\n        <o:PixelsPerInch>96</o:PixelsPerInch>\n      </o:OfficeDocumentSettings>\n    </xml>\n  </noscript>\n  <![endif]-->\n  <style>\n    table, td, div, h1, p {\n      font-family: Arial, sans-serif;\n    }\n    @media screen and (max-width: 530px) {\n      .unsub {\n        display: block;\n        padding: 8px;\n        margin-top: 14px;\n        border-radius: 6px;\n        background-color: #555555;\n        text-decoration: none !important;\n        font-weight: bold;\n      }\n      .col-lge {\n        max-width: 100% !important;\n      }\n    }\n    @media screen and (min-width: 531px) {\n      .col-sml {\n        max-width: 27% !important;\n      }\n      .col-lge {\n        max-width: 73% !important;\n      }\n    }\n    \n    .styled-table {\n    border-collapse: collapse;\n    margin: 25px 0;\n    font-size: 0.9em;\n    font-family: sans-serif;\n    min-width: 400px;\n    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n    }\n    .styled-table thead tr {\n    background-color: #009879;\n    color: #ffffff;\n    text-align: left;\n    }\n    .styled-table th,\n    .styled-table td {\n        padding: 12px 15px;\n    }\n    .styled-table tbody tr {\n    border-bottom: 1px solid #dddddd;\n    }\n    \n    .styled-table tbody tr:nth-of-type(even) {\n        background-color: #f3f3f3;\n    }\n    \n    .styled-table tbody tr:last-of-type {\n        border-bottom: 2px solid #009879;\n    }\n\n    .nice-btn {\n      margin: 25px 0;\n      padding: 12px 15px;\n      background-color: #009879;\n      color: #ffffff;\n      text-align: center;\n      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);\n    }\n\n  </style>\n</head>\n<body style=\"margin:0;padding:0;word-spacing:normal;background-color:#C6D4E2;\">\n  <div role=\"article\" aria-roledescription=\"email\" lang=\"en\" style=\"text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#C6D4E2;\">\n    <table role=\"presentation\" style=\"width:100%;border:none;border-spacing:0;\">\n      <tr>\n        <td align=\"center\" style=\"padding:0;\">\n          <!--[if mso]>\n          <table role=\"presentation\" align=\"center\" style=\"width:600px;\">\n          <tr>\n          <td>\n          <![endif]-->\n          <table role=\"presentation\" style=\"width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;\">\n            <tr> <!--Der Header-->\n              <td style=\"padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;\">\n                <a style=\"text-decoration:none;color:#ffffff;\">Aktivitätsüberwachung</a>\n              </td>\n            </tr>\n            <tr> <!--Der Container-->\n              <td style=\"padding:30px;background-color:#ffffff;\">\n                <h1 style=\"margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;text-align:center;\">\n                  {{topic}}\n                </h1>\n                <p style=\"margin:0;\">\n                  {{{payload}}}\n                </p>\n                <br/>\n                <div>\n                  <a href=\"mailto:pp.aktivitaetsueberwachung@gmail.com?subject=Status\" class=\"nice-btn\">Aktuellen Status abfragen</a>\n                </div>\n              </td>\n            </tr>\n            <tr> <!--Der Footer-->\n              <td style=\"padding:30px;text-align:center;font-size:12px;background-color:#404040;color:#cccccc;\">\n                <p style=\"margin:0;font-size:14px;line-height:20px;\">\n                  ☻ Senioren-Aktivitätsüberwachung 2021<br>\n                    <a class=\"unsub\" href=\"mailto:pp.aktivitaetsueberwachung@gmail.com?subject=Unsubscribe\" style=\"color:#cccccc;text-decoration:underline;\">Unsubscribe</a>\n                </p>\n              </td>\n            </tr>\n          </table>\n          <!--[if mso]>\n          </td>\n          </tr>\n          </table>\n          <![endif]-->\n        </td>\n      </tr>\n    </table>\n  </div>\n</body>\n</html>",
+        "output": "str",
+        "x": 1780,
+        "y": 260,
+        "wires": [
+            [
+                "f217bb7a51f3f512"
+            ]
+        ],
+        "icon": "node-red/parser-html.svg"
+    },
+    {
+        "id": "f217bb7a51f3f512",
+        "type": "e-mail",
+        "z": "a1c305f263109d7c",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "",
+        "dname": "Send Mail",
+        "x": 1940,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "24aadcce62d93c35",
+        "type": "change",
+        "z": "a1c305f263109d7c",
+        "name": "Move Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "text",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "to",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "betreff",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "cd8e322cd9cec62b"
+            ]
+        ]
+    },
+    {
+        "id": "d582b36da0e226b1",
+        "type": "function",
+        "z": "a1c305f263109d7c",
+        "name": "Status",
+        "func": "msg.payload = ({fill: \"red\", text: \"Recipient not in List!\"});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 320,
+        "wires": [
+            [
+                "b1ca3a943e7bdff6"
+            ]
+        ]
+    },
+    {
+        "id": "b1ca3a943e7bdff6",
+        "type": "link out",
+        "z": "a1c305f263109d7c",
+        "name": "Out-Status",
+        "links": [
+            "ef3061f018db2e8c"
+        ],
+        "x": 1615,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "df8084ab6b5b0e62",
+        "type": "mysql",
+        "z": "f55c06f1975f7955",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 980,
+        "y": 240,
+        "wires": [
+            [
+                "2c2eb38c61822823"
+            ]
+        ]
+    },
+    {
+        "id": "1aea8352d8f6ed9d",
+        "type": "status",
+        "z": "a1c305f263109d7c",
+        "name": "",
+        "scope": [
+            "f217bb7a51f3f512"
+        ],
+        "x": 1940,
+        "y": 300,
+        "wires": [
+            [
+                "bf13974c6f2c41f0"
+            ]
+        ]
+    },
+    {
+        "id": "bf13974c6f2c41f0",
+        "type": "link out",
+        "z": "a1c305f263109d7c",
+        "name": "",
+        "links": [
+            "ef3061f018db2e8c"
+        ],
+        "x": 2035,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "1aa35348485f72ce",
+        "type": "debug",
+        "z": "a1c305f263109d7c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1720,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "af27f55398daaadd",
+        "type": "template",
+        "z": "a1c305f263109d7c",
+        "name": "Error-Message",
+        "field": "error",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Recipient \"{{to}}\" not in List!",
+        "output": "str",
+        "x": 1560,
+        "y": 360,
+        "wires": [
+            [
+                "1aa35348485f72ce"
+            ]
+        ]
+    },
+    {
+        "id": "dc31a2df5e6e6a5a",
+        "type": "template",
+        "z": "f55c06f1975f7955",
+        "name": "Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT * \nFROM `sensoren`\nLEFT JOIN\n(SELECT `pings`.`Sensor`, MAX(`pings`.`Timestamp`) AS `PingTimestamp` FROM `pings` GROUP BY `pings`.`Sensor`) as `maxpings`\nON `sensoren`.`ID` = `maxpings`.`Sensor`\n\nLEFT JOIN\n(SELECT `schranken-unterbrechungen`.`Sensor`, MAX(`schranken-unterbrechungen`.`Timestamp`) AS `AktivTimestamp` FROM `schranken-unterbrechungen` GROUP BY `schranken-unterbrechungen`.`Sensor`) as `maxaktiv`\nON `sensoren`.`ID` = `maxaktiv`.`Sensor`",
+        "output": "str",
+        "x": 810,
+        "y": 240,
+        "wires": [
+            [
+                "df8084ab6b5b0e62"
+            ]
+        ]
+    },
+    {
+        "id": "2c2eb38c61822823",
+        "type": "switch",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "property": "payload[0]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 240,
+        "wires": [
+            [
+                "245c33a1f042a886"
+            ]
+        ]
+    },
+    {
+        "id": "55ce6f2ebdee7dd9",
+        "type": "inject",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "props": [
+            {
+                "p": "to",
+                "v": "nix",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 810,
+        "y": 280,
+        "wires": [
+            [
+                "dc31a2df5e6e6a5a"
+            ]
+        ]
+    },
+    {
+        "id": "245c33a1f042a886",
+        "type": "function",
+        "z": "f55c06f1975f7955",
+        "name": "Sensor-Liste",
+        "func": "var text = \"\";\n\n// Passt die Zeitzone jetzt??\n\nfor (var i = 0; i< msg.payload.length; i++)\n{\n    var sensor = msg.payload[i];\n    \n    var pingTimestamp = sensor.PingTimestamp != null ? sensor.PingTimestamp.toLocaleString('de-DE', { timeZone: 'europe/Berlin' }) : \"nie\";\n    var aktivTimestamp = sensor.AktivTimestamp != null ? sensor.AktivTimestamp.toLocaleString('de-DE', { timeZone: 'europe/Berlin' }) : \"nie\";\n    \n    text += `\n    <tr>\n        <td>\n            ${sensor.Type}\n        </td>\n        <td>\n            ${sensor.DisplayName}\n        </td>\n        <td>\n            ${pingTimestamp}\n        </td>\n        <td>\n            ${aktivTimestamp}\n        </td>\n    </tr>\n    `\n}\n\nmsg.payload = text;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1270,
+        "y": 240,
+        "wires": [
+            [
+                "a56e9b92fdd6424b"
+            ]
+        ]
+    },
+    {
+        "id": "a56e9b92fdd6424b",
+        "type": "template",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hallo<br/>\nDies sind die bekannten Sensoren:  \n\n<table class=\"styled-table\">\n    <thead>\n        <tr>\n            <th>\n                Name\n            </th>\n            <th>\n                Typ\n            </th>\n            <th>\n                Letzer Ping\n            </th>\n            <th>\n                Letze Aktivität\n            </th>\n        </tr>\n    </thead>\n    <tbody>\n        {{{payload}}}\n    </tbody>\n</table>\n\n<br/>\n\n\nViele Grüße,<br/>\nNode-Red",
+        "output": "str",
+        "x": 1410,
+        "y": 240,
+        "wires": [
+            [
+                "7dcece1531a63dad"
+            ]
+        ]
+    },
+    {
+        "id": "37592bfe27b5cf42",
+        "type": "subflow:a1c305f263109d7c",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "env": [],
+        "x": 1710,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7dcece1531a63dad",
+        "type": "change",
+        "z": "f55c06f1975f7955",
+        "name": "Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Sensor Infos",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1550,
+        "y": 240,
+        "wires": [
+            [
+                "37592bfe27b5cf42"
+            ]
+        ]
+    },
+    {
+        "id": "f20d3161e1dd8e23",
+        "type": "comment",
+        "z": "f55c06f1975f7955",
+        "name": "\"Status\" als Betreff um eine Liste mit allen Sensoren und deren letzen Pings zu bekommen",
+        "info": "",
+        "x": 630,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "7d3f1624bf0272e4",
+        "type": "comment",
+        "z": "f55c06f1975f7955",
+        "name": "\"Unsubscribe\" als Betreff um keine Benachrichtigungen mehr zu erhalten",
+        "info": "",
+        "x": 580,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c7c02bc9917f4080",
+        "type": "mqtt in",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "topic": "Rssi",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e739e8a7d19f1489",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 510,
+        "y": 640,
+        "wires": [
+            [
+                "a768fe806a010821"
+            ]
+        ]
+    },
+    {
+        "id": "4c37e005a1f34c9f",
+        "type": "change",
+        "z": "f55c06f1975f7955",
+        "name": "Betreff",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SensorInfo",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 660,
+        "wires": [
+            [
+                "4657d215fbe5a0ed",
+                "5f030434d91cdfe9"
+            ]
+        ]
+    },
+    {
+        "id": "243916ad73da9871",
+        "type": "template",
+        "z": "f55c06f1975f7955",
+        "name": "E-Mail Text",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Info zu {{payload.DisplayName}}!  \nDer Sensortyp ist {{payload.Type}}.",
+        "output": "str",
+        "x": 650,
+        "y": 660,
+        "wires": [
+            [
+                "4c37e005a1f34c9f"
+            ]
+        ]
+    },
+    {
+        "id": "4657d215fbe5a0ed",
+        "type": "subflow:7bde532f6cd579f2",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "env": [],
+        "x": 940,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "3103818fcb3d7586",
+        "type": "subflow:cddb446611f4a3c2",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "env": [],
+        "x": 460,
+        "y": 600,
+        "wires": [
+            [
+                "243916ad73da9871"
+            ]
+        ]
+    },
+    {
+        "id": "117e2d3f4bf5cb23",
+        "type": "inject",
+        "z": "f55c06f1975f7955",
+        "name": "Sende Mail",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"DisplayName\": \"Ein Display Name\", \"Type\": \"Sensor-Typ\"}",
+        "payloadType": "json",
+        "x": 480,
+        "y": 660,
+        "wires": [
+            [
+                "243916ad73da9871"
+            ]
+        ]
+    },
+    {
+        "id": "06be798e55baa075",
+        "type": "inject",
+        "z": "f55c06f1975f7955",
+        "name": "Sende Mail über Sensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "num",
+        "x": 250,
+        "y": 600,
+        "wires": [
+            [
+                "3103818fcb3d7586"
+            ]
+        ]
+    },
+    {
+        "id": "6439417a454a5b2d",
+        "type": "comment",
+        "z": "f55c06f1975f7955",
+        "name": "SELECT-Erklärung",
+        "info": "Jeder Sensor\n\nDer MAX(Timestamp) eines Pings an den Sensor\n\nDer MAX(Timestamp) einer Aktivität des Sensors",
+        "x": 810,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "36c6616624a60832",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "Format Sensors",
+        "func": "var text = \"\";\n\n// Passt die Zeitzone jetzt??\n\nfor (var i = 0; i< msg.payload.length; i++)\n{\n    var sensor = msg.payload[i];\n    \n    text+=`\n    Typ: ${sensor.Type}\n    Name: ${sensor.DisplayName}\n    Zuletzt: ${sensor.Timestamp.toLocaleString('de-DE', { timeZone: 'europe/Berlin' })}\n    Status: ${sensor.Status}\n    ---\n    `;\n}\n\nmsg.payload = text;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1480,
+        "y": 400,
+        "wires": [
+            [
+                "815e55d97698fa2c"
+            ]
+        ]
+    },
+    {
+        "id": "815e55d97698fa2c",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hallo  \nEinige Geräte sind nicht erreichbar:  \n\n\n{{{payload}}}\n\n\nViele Grüße,  \nNode-Red",
+        "output": "str",
+        "x": 1640,
+        "y": 400,
+        "wires": [
+            [
+                "6164f4f8ae3bd7d3"
+            ]
+        ]
+    },
+    {
+        "id": "154ce76d85fcb073",
+        "type": "mysql",
+        "z": "d39cdfe2fe653489",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [
+                "35ffbf072fdf020f"
+            ]
+        ]
+    },
+    {
+        "id": "6e424c10df5c7ea6",
+        "type": "change",
+        "z": "d39cdfe2fe653489",
+        "name": "Query: Get all Telegram user",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SELECT `Address` FROM `telegram`;",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 420,
+        "wires": [
+            [
+                "154ce76d85fcb073"
+            ]
+        ]
+    },
+    {
+        "id": "35ffbf072fdf020f",
+        "type": "change",
+        "z": "d39cdfe2fe653489",
+        "name": "Set Recipients",
+        "rules": [
+            {
+                "t": "set",
+                "p": "recipients",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "topic",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "ab04e59dc75d0c3a"
+            ]
+        ]
+    },
+    {
+        "id": "f8dbbf3466a95288",
+        "type": "catch",
+        "z": "d39cdfe2fe653489",
+        "d": true,
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 380,
+        "y": 620,
+        "wires": [
+            [
+                "8d955cbfadbc3975",
+                "7233ebbc2d6fad3e"
+            ]
+        ]
+    },
+    {
+        "id": "2bfd17995164d730",
+        "type": "change",
+        "z": "d39cdfe2fe653489",
+        "name": "Format",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 280,
+        "wires": [
+            [
+                "ce0b32cfcd6fab03",
+                "4fdb721da95709ae"
+            ]
+        ]
+    },
+    {
+        "id": "8d955cbfadbc3975",
+        "type": "function",
+        "z": "d39cdfe2fe653489",
+        "name": "Throw Error",
+        "func": "throw msg.error;",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "b4d3fe87014d3b1f",
+        "type": "comment",
+        "z": "d39cdfe2fe653489",
+        "name": "Params: payload = Mail-Text; topic = Betreff",
+        "info": "",
+        "x": 210,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ce0b32cfcd6fab03",
+        "type": "function",
+        "z": "d39cdfe2fe653489",
+        "name": "Status",
+        "func": "var count = msg.recipients.length;\n\nmsg.payload = ({fill: \"green\", text: count.toString() + \" Telegram sent.\"});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1310,
+        "y": 320,
+        "wires": [
+            [
+                "181cbf763b4f2089"
+            ]
+        ]
+    },
+    {
+        "id": "7233ebbc2d6fad3e",
+        "type": "function",
+        "z": "d39cdfe2fe653489",
+        "name": "Status",
+        "func": "msg.payload = ({fill: \"red\", text: msg.error.message});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 580,
+        "wires": [
+            [
+                "242dcd13b4d12316"
+            ]
+        ]
+    },
+    {
+        "id": "181cbf763b4f2089",
+        "type": "link out",
+        "z": "d39cdfe2fe653489",
+        "name": "Out-Status",
+        "links": [],
+        "x": 1435,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "29c258fdfe87956e",
+        "type": "link in",
+        "z": "d39cdfe2fe653489",
+        "name": "In-Status",
+        "links": [],
+        "x": 55,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "242dcd13b4d12316",
+        "type": "link out",
+        "z": "d39cdfe2fe653489",
+        "name": "Out-Status",
+        "links": [],
+        "x": 735,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "4fdb721da95709ae",
+        "type": "function",
+        "z": "d39cdfe2fe653489",
+        "name": "ForEach Recipient",
+        "func": "var recipients = msg.recipients;\nvar msgs = [];\n\nfor (var i = 0; i < recipients.length; i++)\n{\n    let newmsg = {};\n    \n    newmsg.payload = {\"chatId\":msg.recipients[i].Address,\n                \"type\":\"message\",\n                \"content\":msg.payload};\n                \n    msgs.push(newmsg);\n}\n\nreturn [msgs];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1350,
+        "y": 260,
+        "wires": [
+            [
+                "f4a4e272e54594f5"
+            ]
+        ]
+    },
+    {
+        "id": "f4a4e272e54594f5",
+        "type": "telegram sender",
+        "z": "d39cdfe2fe653489",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1580,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "976a4157476d5a1e",
+        "type": "comment",
+        "z": "85e5a450a494a90d",
+        "name": "Params: payload = Mail-Text; topic = Betreff; to = Recipient",
+        "info": "",
+        "x": 260,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "cdbba5488fc2bf74",
+        "type": "link in",
+        "z": "85e5a450a494a90d",
+        "name": "In-Status",
+        "links": [],
+        "x": 145,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2884fd48197a16b4",
+        "type": "template",
+        "z": "85e5a450a494a90d",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT 1 \nFROM `telegram` \nWHERE `Address` = ?;",
+        "output": "str",
+        "x": 830,
+        "y": 380,
+        "wires": [
+            [
+                "1bdfef6593039e0b"
+            ]
+        ]
+    },
+    {
+        "id": "1bdfef6593039e0b",
+        "type": "mysql",
+        "z": "85e5a450a494a90d",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1020,
+        "y": 380,
+        "wires": [
+            [
+                "5eeb0c1dc72716b5"
+            ]
+        ]
+    },
+    {
+        "id": "5eeb0c1dc72716b5",
+        "type": "switch",
+        "z": "85e5a450a494a90d",
+        "name": "If Exists",
+        "property": "payload[0][\"1\"]",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1200,
+        "y": 380,
+        "wires": [
+            [
+                "4c7639eca517d09b"
+            ],
+            [
+                "1ae53750410d68c1",
+                "06e035cce40d09b5"
+            ]
+        ]
+    },
+    {
+        "id": "4c7639eca517d09b",
+        "type": "change",
+        "z": "85e5a450a494a90d",
+        "name": "Get Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "chatId",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "text",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1390,
+        "y": 360,
+        "wires": [
+            [
+                "b091e805c0a84774",
+                "ce4bcee467653d31"
+            ]
+        ]
+    },
+    {
+        "id": "1ae53750410d68c1",
+        "type": "function",
+        "z": "85e5a450a494a90d",
+        "name": "Status",
+        "func": "msg.payload = ({fill: \"red\", text: \"Recipient not in List!\"});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 420,
+        "wires": [
+            [
+                "7a4797a7b414141d"
+            ]
+        ]
+    },
+    {
+        "id": "7a4797a7b414141d",
+        "type": "link out",
+        "z": "85e5a450a494a90d",
+        "name": "Out-Status",
+        "links": [],
+        "x": 1445,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2f3105f38c786cb6",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "06e035cce40d09b5",
+        "type": "template",
+        "z": "85e5a450a494a90d",
+        "name": "Error-Message",
+        "field": "error",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Recipient \"{{to}}\" not in List!",
+        "output": "str",
+        "x": 1390,
+        "y": 460,
+        "wires": [
+            [
+                "2f3105f38c786cb6"
+            ]
+        ]
+    },
+    {
+        "id": "ce4bcee467653d31",
+        "type": "telegram sender",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "bot": "f685b7769e41c295",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1640,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7fa56759b4af7c2c",
+        "type": "change",
+        "z": "85e5a450a494a90d",
+        "name": "Move Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "text",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.chatId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 380,
+        "wires": [
+            [
+                "4b099493f69109cc",
+                "9fbf9a1e4b2df745"
+            ]
+        ]
+    },
+    {
+        "id": "52640fa2f9c9d0cd",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.chatId",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ca92b10584e0ccfa",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.content",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d1bd82d715156cc5",
+        "type": "json",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 170,
+        "y": 400,
+        "wires": [
+            [
+                "52640fa2f9c9d0cd",
+                "ca92b10584e0ccfa",
+                "7fa56759b4af7c2c"
+            ]
+        ]
+    },
+    {
+        "id": "cc5b7a10a60fb972",
+        "type": "json",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 80,
+        "wires": [
+            [
+                "160d6bf2789ab560"
+            ]
+        ]
+    },
+    {
+        "id": "4b099493f69109cc",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9fbf9a1e4b2df745",
+        "type": "function",
+        "z": "85e5a450a494a90d",
+        "name": "ToArray",
+        "func": "msg.payload = [msg.payload];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "2884fd48197a16b4"
+            ]
+        ]
+    },
+    {
+        "id": "b091e805c0a84774",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1590,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "bfc1288156070f44",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 0,
+        "y": 0,
+        "wires": []
+    },
+    {
+        "id": "42835bd9d0407ca3",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 0,
+        "y": 0,
+        "wires": []
+    },
+    {
+        "id": "71ddb42481386c27",
+        "type": "debug",
+        "z": "85e5a450a494a90d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 0,
+        "y": 0,
+        "wires": []
+    },
+    {
+        "id": "160d6bf2789ab560",
+        "type": "subflow:d39cdfe2fe653489",
+        "z": "7129d7f73a104082",
+        "name": "",
+        "env": [],
+        "x": 680,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ab04e59dc75d0c3a",
+        "type": "join",
+        "z": "d39cdfe2fe653489",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 950,
+        "y": 280,
+        "wires": [
+            [
+                "2bfd17995164d730"
+            ]
+        ]
+    },
+    {
+        "id": "81346dc54a7049fd",
+        "type": "function",
+        "z": "d39cdfe2fe653489",
+        "name": "Default Payload+Topic If not exists",
+        "func": "if (!msg.hasOwnProperty(\"payload\"))\n{\n    msg.payload = \"null\";\n}\n\nif (!msg.hasOwnProperty(\"topic\"))\n{\n    msg.topic = \"null\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "ab04e59dc75d0c3a"
+            ]
+        ]
+    },
+    {
+        "id": "9363527b9abfe140",
+        "type": "subflow:7bde532f6cd579f2",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "env": [],
+        "x": 3060,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "a43b670da63a44d8",
+        "type": "change",
+        "z": "29259d5b7bef6133",
+        "name": "Mail",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Inaktivität",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Beacon: Seit 3h keine Aktivität erfasst.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2870,
+        "y": 1100,
+        "wires": [
+            [
+                "9363527b9abfe140"
+            ]
+        ]
+    },
+    {
+        "id": "e17c4e53cd953049",
+        "type": "debug",
+        "z": "d39cdfe2fe653489",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1570,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "80716c648364879d",
+        "type": "debug",
+        "z": "29259d5b7bef6133",
+        "name": "Triangulationsquery",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2190,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "75b04e5692e1dbc1",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "starttime",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 580,
+        "wires": [
+            [
+                "a768fe806a010821"
+            ]
+        ]
+    },
+    {
+        "id": "63381df634463c87",
+        "type": "mysql",
+        "z": "1cbbac64aa4cf17a",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 2080,
+        "y": 380,
+        "wires": [
+            [
+                "0ba1d0b72d2e47ba"
+            ]
+        ]
+    },
+    {
+        "id": "a328f3ae0a79ec9d",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "DB ERROR",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2410,
+        "y": 340,
+        "wires": [],
+        "icon": "font-awesome/fa-warning"
+    },
+    {
+        "id": "0ba1d0b72d2e47ba",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "property": "payload.affectedRows",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2250,
+        "y": 380,
+        "wires": [
+            [
+                "a328f3ae0a79ec9d"
+            ],
+            [
+                "85d452ca2c6e26e3",
+                "e62c2d0d8f3edbbe"
+            ]
+        ]
+    },
+    {
+        "id": "85d452ca2c6e26e3",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Success",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "\"Success\"",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2400,
+        "y": 420,
+        "wires": [],
+        "icon": "font-awesome/fa-check"
+    },
+    {
+        "id": "bbe1be68713875b5",
+        "type": "mysql",
+        "z": "1cbbac64aa4cf17a",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 2020,
+        "y": 700,
+        "wires": [
+            [
+                "b2a63c22da7a711d"
+            ]
+        ]
+    },
+    {
+        "id": "3546fc01f19ba39f",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "DB ERROR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2370,
+        "y": 660,
+        "wires": [],
+        "icon": "font-awesome/fa-warning"
+    },
+    {
+        "id": "b2a63c22da7a711d",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "property": "payload.affectedRows",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2210,
+        "y": 700,
+        "wires": [
+            [
+                "3546fc01f19ba39f"
+            ],
+            [
+                "867e36df77f9640d"
+            ]
+        ]
+    },
+    {
+        "id": "867e36df77f9640d",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Success",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "\"Success\"",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2360,
+        "y": 740,
+        "wires": [],
+        "icon": "font-awesome/fa-check"
+    },
+    {
+        "id": "e62c2d0d8f3edbbe",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "d": true,
+        "name": "Ping Dauer",
+        "func": "var time = Date.now() - msg.starttime;\n\nmsg.payload = [time, \"Node-Red Ping Ganz\", msg['payload-copy'].value];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2630,
+        "y": 380,
+        "wires": [
+            [
+                "0026599e314f9e64"
+            ]
+        ]
+    },
+    {
+        "id": "b3723b5ed5fc7199",
+        "type": "mysql",
+        "z": "1cbbac64aa4cf17a",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 3040,
+        "y": 380,
+        "wires": [
+            [
+                "62da216a8a72d0bf"
+            ]
+        ]
+    },
+    {
+        "id": "0026599e314f9e64",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `pingdauer` (`Dauer`, `Art`, `Value`) VALUES(?, ?, ?)",
+        "output": "str",
+        "x": 2850,
+        "y": 380,
+        "wires": [
+            [
+                "b3723b5ed5fc7199"
+            ]
+        ]
+    },
+    {
+        "id": "62da216a8a72d0bf",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3210,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "dcb133d19ed73479",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Kein Lora",
+        "info": "Da keine sinnvolle Interpretation der Lora-RSSI Werte möglich ist, befindet sich hier kein PFad um diese Interpretation durchzuführen und entsprechend zu reagieren.",
+        "x": 190,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "7281400dcc9a805b",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "func": "if (msg.payload.hasOwnProperty(\"rssi1\"))\n{\n    msg.topic = \"rssi1\";\n    msg.payload = msg.payload.rssi1;\n} \nelse if (msg.payload.hasOwnProperty(\"rssi2\"))\n{\n    msg.topic = \"rssi2\";\n    msg.payload = msg.payload.rssi2;\n} else if (msg.payload.hasOwnProperty(\"rssi3\"))\n{\n    msg.topic = \"rssi3\";\n    msg.payload = msg.payload.rssi3;\n} else\n{\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 880,
+        "wires": [
+            [
+                "4dc3031cef19b4f6"
+            ]
+        ]
+    },
+    {
+        "id": "9fcdfee17ef7bd30",
+        "type": "BLE Beacon Scanner",
+        "z": "1cbbac64aa4cf17a",
+        "d": true,
+        "name": "",
+        "x": 260,
+        "y": 880,
+        "wires": [
+            [
+                "6a7ece60bc796fea"
+            ]
+        ]
+    },
+    {
+        "id": "635050baf3643f5f",
+        "type": "delay",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 660,
+        "y": 880,
+        "wires": [
+            [
+                "165fdfe038e5bc4e"
+            ]
+        ]
+    },
+    {
+        "id": "4dc3031cef19b4f6",
+        "type": "join",
+        "z": "1cbbac64aa4cf17a",
+        "name": "RSSI-Schranke",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "5",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1260,
+        "y": 880,
+        "wires": [
+            [
+                "a847ca80e8b029b4"
+            ]
+        ]
+    },
+    {
+        "id": "a847ca80e8b029b4",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.timestamp",
+                "pt": "msg",
+                "to": "$now(\"[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]\", \"+0200\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 880,
+        "wires": [
+            [
+                "5857070ad08fc91f"
+            ]
+        ]
+    },
+    {
+        "id": "5857070ad08fc91f",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToArray & Check for Completeness",
+        "func": "if (!(msg.payload.rssi1 != null && msg.payload.rssi2 != null && msg.payload.rssi3 != null))\n{\n    var rssi1Missing = msg.payload.rssi1 == null;\n    var rssi2Missing = msg.payload.rssi2 == null;\n    var rssi3Missing = msg.payload.rssi3 == null;\n    \n    var err = \"Missing: \";\n    \n    err += (rssi1Missing ? \"RSSI1 \" : \"\");\n    err += (rssi2Missing ? \"RSSI2 \" : \"\");\n    err += (rssi3Missing ? \"RSSI3 \" : \"\");\n    \n    node.status({fill:\"red\",shape:\"ring\",text:err});\n    return null;\n}\n\nnode.status({});\n\nvar pl = [msg.payload.timestamp, \nmsg.payload.rssi1, \nmsg.payload.rssi2, \nmsg.payload.rssi3];\n\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1660,
+        "y": 880,
+        "wires": [
+            [
+                "0442b0ce12abade8",
+                "e18121cf5ed8607e"
+            ]
+        ]
+    },
+    {
+        "id": "0442b0ce12abade8",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Parameters",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1930,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "e18121cf5ed8607e",
+        "type": "template",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Add Insert-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `triangulation` (`Timestamp`, `rssi1`, `rssi2`, `rssi3`) VALUES(?, ?, ?, ?)",
+        "output": "str",
+        "x": 1930,
+        "y": 880,
+        "wires": [
+            [
+                "d5eb91a5f191aa73"
+            ]
+        ]
+    },
+    {
+        "id": "d5eb91a5f191aa73",
+        "type": "mysql",
+        "z": "1cbbac64aa4cf17a",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 2140,
+        "y": 880,
+        "wires": [
+            [
+                "d97b579a87b94f3a"
+            ]
+        ]
+    },
+    {
+        "id": "d97b579a87b94f3a",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "property": "payload.affectedRows",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2330,
+        "y": 880,
+        "wires": [
+            [
+                "f9d56fe927ef57c2"
+            ],
+            [
+                "05a5596a0805d75e"
+            ]
+        ]
+    },
+    {
+        "id": "f9d56fe927ef57c2",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "DB ERROR",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2490,
+        "y": 840,
+        "wires": [],
+        "icon": "font-awesome/fa-warning"
+    },
+    {
+        "id": "05a5596a0805d75e",
+        "type": "debug",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Success",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "\"Success\"",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2480,
+        "y": 920,
+        "wires": [],
+        "icon": "font-awesome/fa-check"
+    },
+    {
+        "id": "6a7ece60bc796fea",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Beaconauswahl",
+        "property": "payload.address",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "c1:66:8f:34:4f:b9",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 880,
+        "wires": [
+            [
+                "635050baf3643f5f"
+            ]
+        ]
+    },
+    {
+        "id": "a78125aaf3685447",
+        "type": "delay",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "8",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 2520,
+        "y": 1180,
+        "wires": [
+            [
+                "a43b670da63a44d8",
+                "de55adb5b089f0b1"
+            ]
+        ]
+    },
+    {
+        "id": "457777f83a5b138e",
+        "type": "delay",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "8",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 2240,
+        "y": 700,
+        "wires": [
+            [
+                "2ca06f6f2055f152",
+                "697b05f11903ab23"
+            ]
+        ]
+    },
+    {
+        "id": "6fe761e1122d6e4f",
+        "type": "subflow:7bde532f6cd579f2",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "env": [],
+        "x": 2780,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "2ca06f6f2055f152",
+        "type": "change",
+        "z": "29259d5b7bef6133",
+        "name": "Mail",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Inaktivität",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Seit 3h keine Aktivität erfasst.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2570,
+        "y": 660,
+        "wires": [
+            [
+                "6fe761e1122d6e4f"
+            ]
+        ]
+    },
+    {
+        "id": "f1d65a7e824dcf76",
+        "type": "delay",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 900,
+        "y": 1300,
+        "wires": [
+            [
+                "6adda1904e49cf35"
+            ]
+        ]
+    },
+    {
+        "id": "4309cf2f42439f2b",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "BLE Beacon Anwesenheitscheck",
+        "info": "",
+        "x": 510,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "681015fed98179cf",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "RasPi als RSSI3 verwenden, falls benötigt.",
+        "info": "",
+        "x": 320,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "165fdfe038e5bc4e",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Set as RSSI3",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload-copy",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.rssi3",
+                "pt": "msg",
+                "to": "payload-copy.rssi",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload-copy",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 880,
+        "wires": [
+            [
+                "7281400dcc9a805b"
+            ]
+        ]
+    },
+    {
+        "id": "1d81729b402f6491",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "status",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 380,
+        "wires": [
+            [
+                "fe19d007d97b50d0",
+                "71c2f7e06a62962d"
+            ]
+        ]
+    },
+    {
+        "id": "fe19d007d97b50d0",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "$now(\"[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]\", \"+0200\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1250,
+        "y": 380,
+        "wires": [
+            [
+                "f359294b138a0559"
+            ]
+        ]
+    },
+    {
+        "id": "f359294b138a0559",
+        "type": "subflow:927f3f4276b40643",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 1470,
+        "y": 380,
+        "wires": [
+            [
+                "3ce87071bb68874e"
+            ]
+        ]
+    },
+    {
+        "id": "3ce87071bb68874e",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToArray",
+        "func": "var pl = [msg.payload, msg.timestamp, msg.status];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1680,
+        "y": 380,
+        "wires": [
+            [
+                "57d8cf3f95300de7"
+            ]
+        ]
+    },
+    {
+        "id": "68174a790001ea67",
+        "type": "join",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Join-Ping",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 880,
+        "y": 2920,
+        "wires": [
+            [
+                "ce51c098aa71689b"
+            ]
+        ]
+    },
+    {
+        "id": "9535b5f262bbaaef",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$now(\"[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]\", \"+0200\")",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "timestamp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 2860,
+        "wires": [
+            [
+                "68174a790001ea67"
+            ]
+        ]
+    },
+    {
+        "id": "ce51c098aa71689b",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToArray",
+        "func": "var pl = [msg.payload.sensor, msg.payload.timestamp, msg.payload.status];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 2920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "82a509eee55a2aab",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "status",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 2820,
+        "wires": [
+            [
+                "68174a790001ea67"
+            ]
+        ]
+    },
+    {
+        "id": "47931ccd9a3adc22",
+        "type": "subflow:927f3f4276b40643",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 610,
+        "y": 2900,
+        "wires": [
+            [
+                "68174a790001ea67"
+            ]
+        ]
+    },
+    {
+        "id": "df08902155db9f78",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToArray",
+        "func": "var pl = [msg.payload, msg.timestamp, msg.status];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1620,
+        "y": 560,
+        "wires": [
+            [
+                "d759dbf4b072e88d"
+            ]
+        ]
+    },
+    {
+        "id": "ed95401fe8e5855b",
+        "type": "subflow:927f3f4276b40643",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 1410,
+        "y": 560,
+        "wires": [
+            [
+                "df08902155db9f78"
+            ]
+        ]
+    },
+    {
+        "id": "6b5640b405a74da7",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "$now(\"[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]\", \"+0200\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1190,
+        "y": 560,
+        "wires": [
+            [
+                "ed95401fe8e5855b"
+            ]
+        ]
+    },
+    {
+        "id": "58d293cdcae11571",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "status",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 560,
+        "wires": [
+            [
+                "6b5640b405a74da7"
+            ]
+        ]
+    },
+    {
+        "id": "7e5ee41f5877e916",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "ToArray",
+        "func": "var pl = [msg.payload, msg.timestamp, msg.status];\nmsg.payload = pl;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1660,
+        "y": 700,
+        "wires": [
+            [
+                "1bf7ea91e9f0d734"
+            ]
+        ]
+    },
+    {
+        "id": "5a8044624ff2ad5f",
+        "type": "subflow:927f3f4276b40643",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "env": [],
+        "x": 1450,
+        "y": 700,
+        "wires": [
+            [
+                "7e5ee41f5877e916"
+            ]
+        ]
+    },
+    {
+        "id": "89822c2552e1c2c3",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Timestamp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "$now(\"[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]\", \"+0200\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1230,
+        "y": 700,
+        "wires": [
+            [
+                "5a8044624ff2ad5f"
+            ]
+        ]
+    },
+    {
+        "id": "3c3e050530e3c69e",
+        "type": "change",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "status",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 700,
+        "wires": [
+            [
+                "89822c2552e1c2c3"
+            ]
+        ]
+    },
+    {
+        "id": "3b9567f89ceea8e6",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "LoRa",
+        "info": "",
+        "x": 1090,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "32b6387770b788ca",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Schranken-Unterbrechungen",
+        "info": "",
+        "x": 1120,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b2b9734063d3d47b",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Pings",
+        "info": "",
+        "x": 1090,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "82e9edf57ad4dadf",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Ping mit Fehler",
+        "info": "",
+        "x": 1300,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8dbac5769ee43456",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Triangulation",
+        "info": "",
+        "x": 1110,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "b5ab4925401640b4",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Ping-Dauer messen",
+        "info": "Siehe \"Setze msg.starttime\"-Node am Anfang",
+        "x": 2650,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d33cca038e200f77",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Check if Sensor turned inactive (No Pings)",
+        "info": "",
+        "x": 620,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "bd1a7a0492b4dbeb",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Gab es RSSI-Werte? (Beacon zuhause?)",
+        "info": "",
+        "x": 740,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6164f4f8ae3bd7d3",
+        "type": "subflow:d39cdfe2fe653489",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "env": [],
+        "x": 1820,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8782df8275d6c924",
+        "type": "comment",
+        "z": "29259d5b7bef6133",
+        "name": "Gab es Schranken-Aktivität?",
+        "info": "",
+        "x": 660,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "c8d9ce50e842c04a",
+        "type": "subflow:d39cdfe2fe653489",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "env": [],
+        "x": 2820,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "86ab3ba66b7dd597",
+        "type": "subflow:d39cdfe2fe653489",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "x": 3100,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "94613570834772cf",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "func": "msg.payload = [msg.starttime.now];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 1120,
+        "wires": [
+            [
+                "c952abd2bcdddf52"
+            ]
+        ]
+    },
+    {
+        "id": "b77d0bb9501b19d2",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "-15min",
+        "func": "msg.starttime={now :new Date()-900000}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 640,
+        "wires": [
+            [
+                "036ea4960c9837db"
+            ]
+        ]
+    },
+    {
+        "id": "036ea4960c9837db",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT Timestamp FROM `rssi` ORDER BY `ID` DESC LIMIT 1",
+        "output": "str",
+        "x": 870,
+        "y": 640,
+        "wires": [
+            [
+                "323bf8b78bfe1feb"
+            ]
+        ]
+    },
+    {
+        "id": "323bf8b78bfe1feb",
+        "type": "mysql",
+        "z": "29259d5b7bef6133",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1060,
+        "y": 640,
+        "wires": [
+            [
+                "74abdfaec2971e93"
+            ]
+        ]
+    },
+    {
+        "id": "74abdfaec2971e93",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "toDate",
+        "func": "msg.payload = Date.parse(msg.payload[0].Timestamp);\nmsg.payload = new Date(msg.payload)-3600000\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 640,
+        "wires": [
+            [
+                "b035a05121204c22"
+            ]
+        ]
+    },
+    {
+        "id": "b035a05121204c22",
+        "type": "switch",
+        "z": "29259d5b7bef6133",
+        "name": "Abwesend?",
+        "property": "starttime.now",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "payload",
+                "vt": "msg"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            [
+                "edbd4d04ea6b9580"
+            ],
+            [
+                "63669e47b125d04e",
+                "86156dc9452a1bd3"
+            ]
+        ]
+    },
+    {
+        "id": "e8941302e8833198",
+        "type": "template",
+        "z": "29259d5b7bef6133",
+        "name": "Add Select-Query",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT Timestamp FROM `schranken-unterbrechungen` ORDER BY `ID` DESC LIMIT 1",
+        "output": "str",
+        "x": 850,
+        "y": 800,
+        "wires": [
+            [
+                "68b5ec4a7c4d67b3"
+            ]
+        ]
+    },
+    {
+        "id": "f7abe5dac8745c7a",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "-3h",
+        "func": "msg.starttime={now :new Date()-10800000}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 800,
+        "wires": [
+            [
+                "e8941302e8833198"
+            ]
+        ]
+    },
+    {
+        "id": "68b5ec4a7c4d67b3",
+        "type": "mysql",
+        "z": "29259d5b7bef6133",
+        "mydb": "93f0dd26a2ee8dfb",
+        "name": "Execute Query",
+        "x": 1040,
+        "y": 800,
+        "wires": [
+            [
+                "257d131307ba7125"
+            ]
+        ]
+    },
+    {
+        "id": "257d131307ba7125",
+        "type": "function",
+        "z": "29259d5b7bef6133",
+        "name": "toDate",
+        "func": "msg.payload = Date.parse(msg.payload[0].Timestamp);\nmsg.payload = new Date(msg.payload)-3600000\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 800,
+        "wires": [
+            [
+                "958e0d0c0b4af40e"
+            ]
+        ]
+    },
+    {
+        "id": "958e0d0c0b4af40e",
+        "type": "switch",
+        "z": "29259d5b7bef6133",
+        "name": "Inaktiv?",
+        "property": "starttime.now",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "payload",
+                "vt": "msg"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1330,
+        "y": 800,
+        "wires": [
+            [
+                "cfe2289bc5b1a8b2",
+                "1d4b30330e153585"
+            ],
+            [
+                "ce88f11f79d389f0"
+            ]
+        ]
+    },
+    {
+        "id": "5f030434d91cdfe9",
+        "type": "subflow:d39cdfe2fe653489",
+        "z": "f55c06f1975f7955",
+        "name": "",
+        "x": 1110,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "d2859fb256f8791c",
+        "type": "subflow:d39cdfe2fe653489",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "x": 2620,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "697b05f11903ab23",
+        "type": "change",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Seit 3h keine Aktivität erfasst!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2570,
+        "y": 740,
+        "wires": [
+            [
+                "c8d9ce50e842c04a"
+            ]
+        ]
+    },
+    {
+        "id": "de55adb5b089f0b1",
+        "type": "change",
+        "z": "29259d5b7bef6133",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Beacon: Seit 3h keine Aktivität erfasst!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2890,
+        "y": 1220,
+        "wires": [
+            [
+                "86ab3ba66b7dd597"
+            ]
+        ]
+    },
+    {
+        "id": "13066fde0be85852",
+        "type": "function",
+        "z": "7bde532f6cd579f2",
+        "name": "Default Payload+Topic If not exists",
+        "func": "if (!msg.hasOwnProperty(\"payload\"))\n{\n    msg.payload = \"null\";\n}\n\nif (!msg.hasOwnProperty(\"topic\"))\n{\n    msg.topic = \"null\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "8cb06eec27d0acb1"
+            ]
+        ]
+    },
+    {
+        "id": "a7456aae28892ba5",
+        "type": "function",
+        "z": "927f3f4276b40643",
+        "name": "Status",
+        "func": "msg.payload = ({fill: \"blue\", text: \"Existiert.\"});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "632d008e24a72a59",
+        "type": "function",
+        "z": "927f3f4276b40643",
+        "name": "Status",
+        "func": "msg.payload = ({fill: \"green\", text: \"Neu erstellt.\"});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aff03b1040a36abf",
+        "type": "inject",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Nicht-Ok",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 340,
+        "y": 360,
+        "wires": [
+            [
+                "025f553fb84c1ad2"
+            ]
+        ]
+    },
+    {
+        "id": "025f553fb84c1ad2",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "func": "\nmsg.payload = {};\n\nmsg.payload[\"device-type\"] = \"Nonexistant\";\nmsg.payload[\"identifier\"] = 314159265358979323846264338327950;\nmsg.payload[\"msg-type\"] = \"ping\";\nmsg.payload[\"value\"] = \"nichok\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "5b8e3043b5124ea5"
+            ]
+        ]
+    },
+    {
+        "id": "aaef07106a118062",
+        "type": "inject",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Neuer-Sensor",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "14e53fb7f7d64942"
+            ]
+        ]
+    },
+    {
+        "id": "14e53fb7f7d64942",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "func": "\nmsg.payload = {};\n\nmsg.payload[\"device-type\"] = \"ZuLöschen\";\nmsg.payload[\"identifier\"] =  Math.random() * 100000000 + 100000000;\nmsg.payload[\"msg-type\"] = \"ping\";\nmsg.payload[\"value\"] = \"ok\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [
+                "5b8e3043b5124ea5"
+            ]
+        ]
+    },
+    {
+        "id": "ce1eb80742640104",
+        "type": "inject",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Ok",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "ffdcac38d597ef33"
+            ]
+        ]
+    },
+    {
+        "id": "ffdcac38d597ef33",
+        "type": "function",
+        "z": "1cbbac64aa4cf17a",
+        "name": "",
+        "func": "\nmsg.payload = {};\n\nmsg.payload[\"device-type\"] = \"Nonexistant\";\nmsg.payload[\"identifier\"] = 314159265358979323846264338327950;\nmsg.payload[\"msg-type\"] = \"ping\";\nmsg.payload[\"value\"] = \"ok\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 280,
+        "wires": [
+            [
+                "5b8e3043b5124ea5"
+            ]
+        ]
+    },
+    {
+        "id": "5b8e3043b5124ea5",
+        "type": "switch",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Sammler",
+        "property": "true",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 320,
+        "wires": [
+            [
+                "986c8dfb3384046d"
+            ]
+        ]
+    },
+    {
+        "id": "80b32e5a514ee670",
+        "type": "comment",
+        "z": "1cbbac64aa4cf17a",
+        "name": "Demo-Pings",
+        "info": "",
+        "x": 710,
+        "y": 280,
+        "wires": []
+    }
+]
