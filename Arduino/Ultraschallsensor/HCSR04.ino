@@ -1,3 +1,9 @@
+/*
+ * Ultraschallsensor: Sensor sendet ein Ultraschallsignal aus. Trifft dieses auf eine Oberfläche wird es reflektiert. Anhand der Dauer bis die Schallwellen wieder auf den Sensor treffen wird die Distanz zur Oberfläche errechnet.
+ * Anwendung: Sensor wird im Türrahmen auf Brusthöhe plaziert. 
+ * Befindet sich das nächste Objekt in unter 40cm Distanz, wird die Nachricht an den Raspberry Pi geschickt, dass die Tür passiert wurde.
+ */
+
 #include <WiFi.h>
 #include <MQTTPubSubClient.h>
 #include <ArduinoJson.h>
