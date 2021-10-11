@@ -3,6 +3,8 @@
   LoRa Receiver
   pollux labs
   https://polluxlabs.net
+
+  Empfängt die vom LoraSender gesendeten Pakete und übermittelt die Siganstärke (RSSI) als JSONmessage mittels MQTT an den Raspberry Pi. Dort werden die Daten gespeichert und ausgewertet.
 *********/
 
 #include <LoRa.h>
