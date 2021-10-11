@@ -15,6 +15,8 @@ namespace Webserver.Models.Sensor
 
         public Data.Types.LoRa LastLoRa { get; set; }
 
+        public Data.Types.Triangulation LastTriangulation { get; set; }
+
         public string LastActivityTimestamp
         {
             get
@@ -24,6 +26,9 @@ namespace Webserver.Models.Sensor
 
                 if (LastLoRa is not null)
                     return LastLoRa.Timestamp.ToString();
+
+                if (LastTriangulation is not null)
+                    return LastTriangulation.Timestamp.ToString();
 
 
                 return "";
@@ -39,6 +44,9 @@ namespace Webserver.Models.Sensor
 
                 if (LastLoRa is not null)
                     return "LoRa: " + LastLoRa.Value.ToString();
+
+                if (LastTriangulation is not null)
+                    return "Triangulation: " + LastTriangulation.ValueString;
 
 
                 return "";

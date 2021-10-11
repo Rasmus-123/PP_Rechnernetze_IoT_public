@@ -110,5 +110,15 @@ namespace Webserver.Controllers
 
             return RedirectToAction("TelegramList", "Settings");
         }
+
+        [HttpGet]
+        public IActionResult LastTriangulationJson()
+        {
+            SensorDBContext context = HttpContext.RequestServices.GetService(typeof(SensorDBContext)) as SensorDBContext;
+
+            var model = context.GetLastTriangulation();
+
+            return Json(System.Text.Json.JsonSerializer.Serialize(model));
+        }
     }
 }

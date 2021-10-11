@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -110,6 +110,22 @@ namespace Webserver.Data
             return query.FirstOrDefault<Types.LoRa>();
         }
 
+        public Types.Triangulation GetLastTriangulation(Types.Sensor sensor = null)
+        {
+            if (sensor?.Type != "Triangulation" && sensor != null) return null;
+
+            var connection = new MySqlConnection(ConnectionString);
+            var compiler = new SqlKata.Compilers.MySqlCompiler();
+            var sensorDB = new QueryFactory(connection, compiler);
+
+            var query = sensorDB
+                .Query("triangulation")
+                .Select("*")
+                .OrderByDesc("ID");
+
+            return query.FirstOrDefault<Types.Triangulation>();
+        }
+
         public IEnumerable<Models.Sensor.SensorInfo> GetSensorInfos(IEnumerable<Types.Sensor> sensoren)
         {
             var connection = new MySqlConnection(ConnectionString);
@@ -125,7 +141,8 @@ namespace Webserver.Data
                     Sensor = sensor,
                     LastPing = GetLastPing(sensor),
                     LastBarrierInterrupt = GetLastBarrierInterrupt(sensor),
-                    LastLoRa = GetLastLoRa(sensor)
+                    LastLoRa = GetLastLoRa(sensor),
+                    LastTriangulation = GetLastTriangulation(sensor)
                 });
             }
 
@@ -360,6 +377,24 @@ namespace Webserver.Data
                 sensorDB.Statement("COMMIT");
                 return;
             }
+        }
+
+        public IEnumerable<Types.RSSI> GetRSSIs(DateTime? earliest = null, DateTime? latest = null)
+        {
+            var connection = new MySqlConnection(ConnectionString);
+            var compiler = new SqlKata.Compilers.MySqlCompiler();
+            var sensorDB = new QueryFactory(connection, compiler);
+
+            var query = sensorDB.Query("rssi");
+
+            if (earliest is not null) query.Where("Timestamp", ">=", earliest);
+            if (latest is not null) query.Where("Timestamp", "<=", latest);
+
+            query.Limit(100000);
+
+            var results = query.Get<Types.RSSI>();
+
+            return results;
         }
     }
 }

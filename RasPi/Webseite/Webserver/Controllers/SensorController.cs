@@ -42,5 +42,10 @@ namespace Webserver.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Triangulation()
+        {
+            return View();
+        }
     }
 }
