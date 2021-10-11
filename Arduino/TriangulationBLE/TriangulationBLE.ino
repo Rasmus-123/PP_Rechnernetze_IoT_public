@@ -24,7 +24,7 @@ const char* ssid = "PiLAN";
 const char* pass = "raspberrypi42";
 
 // Welche Triangulations-Ecke { rssi1, rssi2, rssi3}
-#define NAME "rssi1"
+#define NAME "rssi2"
 
 // MAC Address - All Lowercase
 std::string beaconMAC = "c1:66:8f:34:4f:b9"; // HPA2
@@ -33,6 +33,7 @@ WiFiClient client;
 MQTTPubSubClient mqtt;
 
 uint32_t chipID;
+uint32_t triangulationsID = 8917234;
 
 BLEScan* pBLEScan;
 static BLEAdvertisedDevice* myDevice;
@@ -115,7 +116,7 @@ void sendPing()
     char jsonPingMessageBuffer[128];
 
     jsonPingDoc["device-type"] = "Triangulation";
-    jsonPingDoc["identifier"] = chipID;
+    jsonPingDoc["identifier"] = chipID + triangulationsID;
 
     jsonPingDoc["msg-type"] = "ping";
     jsonPingDoc["value"] = "ok";
@@ -130,7 +131,7 @@ void sendRSSI(int rssi)
     char jsonMessageBuffer[128];
 
     jsonDoc["device-type"] = "Triangulation";
-    jsonDoc["identifier"] = chipID;
+    jsonDoc["identifier"] = chipID + triangulationsID;
 
     jsonDoc["msg-type"] = "Triangulation";
     jsonDoc[NAME] = rssi;

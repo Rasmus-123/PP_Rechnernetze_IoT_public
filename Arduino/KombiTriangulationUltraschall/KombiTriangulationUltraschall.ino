@@ -122,12 +122,19 @@ void sendPing()
     DynamicJsonDocument jsonPingDoc(128);
     char jsonPingMessageBuffer[128];
 
-    jsonPingDoc["device-type"] = "Triangulation";
-    jsonPingDoc["identifier"] = chipID;
-
     jsonPingDoc["msg-type"] = "ping";
     jsonPingDoc["value"] = "ok";
 
+    jsonPingDoc["device-type"] = "Triangulation";
+    jsonPingDoc["identifier"] = chipID + triangulationsID;
+    
+    serializeJson(jsonPingDoc, jsonPingMessageBuffer);
+    mqtt.publish("ttgo2/ping", jsonPingMessageBuffer);
+
+    
+    jsonPingDoc["device-type"] = "Ultraschallsensor";
+    jsonPingDoc["identifier"] = chipID + ultraschallID;
+    
     serializeJson(jsonPingDoc, jsonPingMessageBuffer);
     mqtt.publish("ttgo2/ping", jsonPingMessageBuffer);
 }
@@ -138,7 +145,7 @@ void sendRSSI(int rssi)
     char jsonMessageBuffer[128];
 
     jsonDoc["device-type"] = "Triangulation";
-    jsonDoc["identifier"] = chipID;
+    jsonDoc["identifier"] = chipID + triangulationsID;
 
     jsonDoc["msg-type"] = "Triangulation";
     jsonDoc[NAME] = rssi;
