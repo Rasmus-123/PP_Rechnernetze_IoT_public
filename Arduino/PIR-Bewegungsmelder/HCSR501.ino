@@ -1,7 +1,14 @@
 /*Based on  Example code for HC-SR501 PIR motion sensor with Arduino. More info: www.www.makerguides.com */
 
-// Wichtig: Vor Beginn der Messung benötigt der Sensor ein bis zwei Minuten zum Kalibrieren. Kalibrierung beginnt sobald der Sensor Strom hat und darf nicht 
-// durch Bewegungen gestört werden, ansonsten kommt es zu Messfehlern
+/*
+* PIR Bewegungssensor: Erfasst Veränderungen der Wärmestrahlung im Messbereich. Menschen strahlen Wärme ab und werden so erfasst. Wird eine Bewegung ermittelt, 
+* erfolgt eine Nachricht (JSON) via MQTT an den Raspberry Pi. Die Bewegung wird mit Zeitpunkt in der Datenbank gespeichert.
+
+* Wichtig: Vor Beginn der Messung benötigt der Sensor ein bis zwei Minuten zum Kalibrieren. Kalibrierung beginnt sobald der Sensor Strom hat und darf nicht 
+* durch Bewegungen gestört werden, ansonsten kommt es zu Messfehlern
+*/
+
+
 
 
 #include <WiFi.h>
