@@ -5,28 +5,24 @@
 
 #include <string>
 
-// RasPi-WLAN
+// RasPi-WLAN 
 const char* ssid = "PiLAN";
 const char* pass = "raspberrypi42";
 
 #define NAME "rssi1"
 
 //const char* beaconMAC = "d1:47:4c:ff:94:38"; //YJK4
-std::string beaconMAC = "c1:66:8f:34:4f:b9"; // HPA2
+std::string beaconMAC = "c1:66:8f:34:4f:b9"; // HPA2 Mac address
 
 WiFiClient client;
-
-static BLEAdvertisedDevice* myDevice;
-
-uint32_t chipID;
-
-
 MQTTPubSubClient mqtt;
 
+uint32_t chipID;
 DynamicJsonDocument jsonDoc(512);
 char jsonMessageBuffer[100];
 
 BLEScan* pBLEScan;
+static BLEAdvertisedDevice* myDevice;
 
 int val;                  
 bool connected = false;
@@ -40,12 +36,10 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks{
         //id.setData(advertisedDevice.getManufacturerData());
 
         std::string Bluetoothname = advertisedDevice.getAddress().toString();
-
-        //Serial.println(Bluetoothname);
         
         if (Bluetoothname == beaconMAC){   // ibeacon Adresse Vergleichen (yjk4 -> d1:47:4c:ff:94:38)
             
-            //Serial.println("- gefunden " + Bluetoothname);                 // wenn überwache Adresse gefunden wurde                                    
+            //Serial.println("- gefunden " + Bluetoothname);            // wenn überwache Adresse gefunden wurde                                    
             BLEDevice::getScan()->stop();                               // Scanvorgang beenden
             myDevice = new BLEAdvertisedDevice(advertisedDevice);
             connected = true;
@@ -60,7 +54,7 @@ void setup() {
   chipID = (ESP.getEfuseMac() << 40) >> 40;  //Sets unique ID for JSON-message
   WiFi.setHostname(NAME);
   
-  jsonDoc["device-type"] = "Triangulation";           //Sensortype is shown as Name
+  jsonDoc["device-type"] = "Triangulation";  //Sensortype is shown as Name
   
   // Unterschiedlich je Sensor vermutlich am sinnvollsten. Also noch was anhängen oder so.
   jsonDoc["identifier"] = chipID;
@@ -143,7 +137,6 @@ void loop(){
     }*/
   
     pBLEScan->clearResults(); // delete results fromBLEScan buffer to release memory
-    //delay(1000);
     delete myDevice;
   }
   
