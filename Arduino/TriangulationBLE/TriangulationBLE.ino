@@ -1,4 +1,12 @@
 /**
+ * Triangulation mithilfe von 3 Empfängern und einem iBeacon.
+ * 
+ * Ein Empfänger eingestellt auf die MAC-Adresse eines Beacons, sendet die erhaltenen RSSI-Werte per MQTT weiter.  
+ * 
+ * Wenn von 3 verschiedenen Empfängern (rssi1, rssi2, rssi3) Werte erhalten wurden, kann basierend auf diesen eine grobe Position bestimmt werden.
+ * 
+ * 
+ * 
  * Arduino IDE Settings:
  *      Board: TTGO T1
  *      Partition Scheme: Huge APP
