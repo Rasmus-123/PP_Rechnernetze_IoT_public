@@ -12,6 +12,12 @@ Fazit:
 Kombination aus PIR- und Ultraschallsensor und Beacon ist sinnvoll.
 Die Daten (Pings und Aktivitätserfassungen) werden in einer Datenbank gespeichert, die letzte Bewegung je Sensor ist auf der lokalen Website einsehbar. Auf der Website können außerdem Emailadressen und Telegram IDs eingegeben werden um Benachrichtigungen bei Inaktivität oder Funktionsstörungen zu erhalten. 
 
+Wer hat was gemacht?
+-> Authors.md
+
+Die nicht genannten Aspekte wurden gemeinsam von der Gruppe durchgeführt. 
+
+
 Literatur Poster:
 
 - Ärzteblatt (2018): Unfallchirurgen und Geriater warnen vor Sturzgefahr im Alter. URL: https://www.aerzteblatt.de/nachrichten/98013/Unfallchirurgen-und-Geriater-warnen-vor-Sturzgefahr-im-Alter
@@ -23,3 +29,5 @@ Literatur Poster:
 - DESTATIS (2018): Zahl der Woche Nr. 49 vom 4. Dezember 2018. URL: https://www.destatis.de/DE/Presse/Pressemitteilungen/Zahl-der-Woche/2018/PD18_49_p002.html
   
 - Statista(2009): Was sind Ihre wichtigsten Wünsche für das Alter? URL: https://de.statista.com/statistik/daten/studie/5418/umfrage/wuensche-fuer-das-alter/
+
+
