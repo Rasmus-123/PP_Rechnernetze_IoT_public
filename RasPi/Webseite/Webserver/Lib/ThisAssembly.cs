@@ -18,6 +18,10 @@ public partial class ThisAssembly
                         "Release";
                     #endif
 
+
+    /**
+     * Source: https://www.meziantou.net/getting-the-date-of-build-of-a-dotnet-assembly-at-runtime.htm#linker-timestamp
+     */
     public static DateTime GetBuildTimestamp()
     {
         const int peHeaderOffset = 60;

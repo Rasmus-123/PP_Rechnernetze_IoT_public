@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Hallo Halloe!" > ~/einlog.txt
-
 timestamp=$(date +%Y-%m-%d_%H-%M-%S)
 
 file_name=Webserver_$timestamp.log

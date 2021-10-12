@@ -30,7 +30,7 @@ namespace Webserver
                 builder
                     .AddFilter("Microsoft", LogLevel.Warning)
                     .AddFilter("System", LogLevel.Warning)
-                    .AddFilter("SBTest.Startup", LogLevel.Information)
+                    .AddFilter("Webserver.Startup", LogLevel.Information)
                     .AddConsole();
             });
 
