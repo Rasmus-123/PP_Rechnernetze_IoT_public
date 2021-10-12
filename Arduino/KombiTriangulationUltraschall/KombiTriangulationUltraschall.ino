@@ -1,17 +1,10 @@
 /**
  * Kombiniert von Rasmus
  * 
- * Triangulation mithilfe von 3 Empfängern und einem iBeacon.
- * 
- * Ein Empfänger eingestellt auf die MAC-Adresse eines Beacons, sendet die erhaltenen RSSI-Werte per MQTT weiter.  
- * 
- * Wenn von 3 verschiedenen Empfängern (rssi1, rssi2, rssi3) Werte erhalten wurden, kann basierend auf diesen eine grobe Position bestimmt werden.
- * 
- * 
- * 
- * Arduino IDE Settings:
- *      Board: TTGO T1
- *      Partition Scheme: Huge APP
+ * More Details in Ultraschallsensor.ino
+ *     By Josephine Lechtermann and based on Rui Santos
+ * More Details in TriangulationBLE.ino
+ *     By Rasmus Sprehe, Yuxia Hu and Based on https://gist.github.com/youjunjer/e73575aaad1236bf19b0f500043c7cde
  */
 
 

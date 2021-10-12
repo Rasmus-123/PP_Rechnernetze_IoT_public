@@ -1,4 +1,8 @@
 /**
+ * By Rasmus Sprehe, Yuxia Hu
+ * 
+ * Based on https://gist.github.com/youjunjer/e73575aaad1236bf19b0f500043c7cde
+ * 
  * Triangulation mithilfe von 3 Empfängern und einem iBeacon.
  * 
  * Ein Empfänger eingestellt auf die MAC-Adresse eines Beacons, sendet die erhaltenen RSSI-Werte per MQTT weiter.  

@@ -1,7 +1,11 @@
 /**
  * Schnell kombiniert von Rasmus
  * 
- * Bewegungsmelder Based on  Example code for HC-SR501 PIR motion sensor with Arduino. More info: www.www.makerguides.com
+ * More Details in Ultraschallsensor.ino
+ *     By Josephine Lechtermann and based on Rui Santos
+ * More Details in PIR-Bewegungsmelder.ino
+ *     By Josephine Lechtermann and Based on Arduino Example code for HC-SR501 PIR motion sensor
+ * 
  */
 
 #include <WiFi.h>
