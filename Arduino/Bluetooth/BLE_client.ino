@@ -1,5 +1,7 @@
 
 /**
+ * Yuxia Hu
+ * based on
  * A BLE client example that is rich in capabilities.
  * There is a lot new capabilities implemented.
  * author unknown
