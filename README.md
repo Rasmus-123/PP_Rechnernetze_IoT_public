@@ -4,21 +4,32 @@ Projekt im Rahmen des Programmierpraktikums Rechnernetze im Sommersemster 2021 a
 
 ## Ziel
 
-Aktivitätsüberwachung alleinlebender Senioren. Falls die Person zuhause ist und über längere Zeit (z.B. 3h) keine Aktivität stattfindet, werden Bezugspersonen benachrichtigt.
+Aktivitätsüberwachung alleinlebender Senioren.  
+Falls die Person zuhause ist und über längere Zeit (z.B. 3h) keine Aktivität stattfindet, werden Bezugspersonen benachrichtigt.
 
 ## Versuche
 
-IRObstaclesensor zur Überwachung einer Zimmertür (-> Reichweite zu gering), Ultraschallsensor zur Überwachung von Zimmertüren (funktioniert), PIR-Bewegungsmelder: Aktivitätserfassung in Aufenthaltsbereichen wie bspw. einer Sitzecke. Lora: TTGO t-Beam als Sender und Empfänger. Erwartung: mit einer Person im Raum ist der RSSI-Wert weniger stabil, sodass die Anwesenheit erkannt werden kann (-> funktioniert nur eingeschränkt, daher nicht nutzbar). Bluetooth: Analog zu Lora. Keine Veränderungen erkennbar. BLE: Beacon sowohl zu Anwesenheitserkennung (funktioniert), als auch zur vereinfachten Triangulation, also Erkennung, ob die Position des Beacon deutlich verändert wurde.
+IRObstaclesensor zur Überwachung einer Zimmertür (-> Reichweite zu gering),  
+
+Ultraschallsensor zur Überwachung von Zimmertüren (funktioniert),  
+
+PIR-Bewegungsmelder: Aktivitätserfassung in Aufenthaltsbereichen wie bspw. einer Sitzecke.
+
+Lora: TTGO t-Beam als Sender und Empfänger.  
+Erwartung: mit einer Person im Raum ist der RSSI-Wert weniger stabil, sodass die Anwesenheit erkannt werden kann (-> funktioniert nur eingeschränkt, daher nicht nutzbar).
+
+Bluetooth: Analog zu Lora. Keine Veränderungen erkennbar.
+
+BLE: Beacon sowohl zu Anwesenheitserkennung (funktioniert), als auch zur vereinfachten Triangulation, also Erkennung, ob die Position des Beacon deutlich verändert wurde.
 
 ## Fazit
 
-Kombination aus PIR- und Ultraschallsensor und Beacon ist sinnvoll.
+Eine Kombination aus PIR- und Ultraschallsensor und Beacon ist sinnvoll.  
 Die Daten (Pings und Aktivitätserfassungen) werden in einer Datenbank gespeichert, die letzte Bewegung je Sensor ist auf der lokalen Website einsehbar. Auf der Website können außerdem Emailadressen und Telegram IDs eingegeben werden um Benachrichtigungen bei Inaktivität oder Funktionsstörungen zu erhalten.
 
 ## Wer hat was gemacht?
 
--> Dokumentation/Authors.md + Kommentare in Arduino-Code
-
+-> [Authors.md](Authors.md) + Kommentare in Arduino-Code.  
 Die nicht genannten Aspekte wurden gemeinsam von der Gruppe durchgeführt.
 
 ## Literatur Poster
