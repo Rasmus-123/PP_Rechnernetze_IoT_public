@@ -1,4 +1,6 @@
-/*Based on  Example code for HC-SR501 PIR motion sensor with Arduino. More info: www.www.makerguides.com */
+/*
+Josephine Lechtermann
+Based on  Example code for HC-SR501 PIR motion sensor with Arduino. More info: www.www.makerguides.com */
 
 /*
 * PIR Bewegungssensor: Erfasst Veränderungen der Wärmestrahlung im Messbereich. Menschen strahlen Wärme ab und werden so erfasst. Wird eine Bewegung ermittelt, 
