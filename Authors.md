@@ -1,4 +1,4 @@
-# Authors
+# Authors - die nicht genannten Aspekte wurden gemeinsam bearbeitet
 
 ## Arduino
 
