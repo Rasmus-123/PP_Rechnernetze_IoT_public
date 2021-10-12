@@ -14,7 +14,7 @@ Für einzelne Sensoren:
 
 ## RasPi
 
-- Website: Rasmus
+- Webseite: Rasmus
 
 - Datenbank: Rasmus
 
@@ -29,6 +29,8 @@ Für einzelne Sensoren:
 - Beacon (für TXPower): Josephine
 
 - Email: Rasmus
+
+- Get-Sensor Subflows: Rasmus
 
 ## Messungen
 
@@ -55,5 +57,3 @@ Für einzelne Sensoren:
 - Obstacle: Josephine
 
 - Beacon (TXPower): Josephine
-
-## Anderes
