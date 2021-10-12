@@ -1,5 +1,6 @@
 /*********
- * Based on
+Josephine Lechtermann
+  Based on
   LoRa Sender
   pollux labs
   https://polluxlabs.net
