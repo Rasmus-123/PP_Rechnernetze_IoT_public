@@ -10,7 +10,7 @@ Bestandteile:
 
 Für einzelne Sensoren:
 
-- PIR, Ultraschall, LORA, IRObstacle, BLE - siehe Kommentar in Code
+- PIR, Ultraschall, LoRa, IRObstacle, BLE - siehe Kommentar in Code
 
 ## RasPi
 
