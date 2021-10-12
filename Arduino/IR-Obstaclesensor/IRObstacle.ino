@@ -1,4 +1,7 @@
 /*
+ * Josephine Lechtermann
+ * based on Arduino Example Code WiFiMQTT
+ * 
  * Code for IRObstaclesensor. Sensor should recognize if someone walkes through a door. Test: range too low (few centimeters)
  * Obstacle in 40cm isn't recognized -> not useful for this application
  * 
