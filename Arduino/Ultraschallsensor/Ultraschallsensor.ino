@@ -1,4 +1,17 @@
 /*
+
+ * Josephine Lechtermann
+ * based on
+      Rui Santos
+      Complete project details at https://RandomNerdTutorials.com/esp32-hc-sr04-ultrasonic-arduino/
+
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files.
+
+      The above copyright notice and this permission notice shall be included in all
+      copies or substantial portions of the Software.
+   and Arduino Example WiFiMQTT
+   
  * Ultraschallsensor: Sensor sendet ein Ultraschallsignal aus. Trifft dieses auf eine Oberfläche wird es reflektiert. Anhand der Dauer bis die Schallwellen wieder auf den Sensor treffen wird die Distanz zur Oberfläche errechnet.
  * Anwendung: Sensor wird im Türrahmen auf Brusthöhe plaziert. 
  * Befindet sich das nächste Objekt in unter 40cm Distanz, wird die Nachricht an den Raspberry Pi geschickt, dass die Tür passiert wurde.
