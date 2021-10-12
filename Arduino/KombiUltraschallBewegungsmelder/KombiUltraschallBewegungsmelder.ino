@@ -1,3 +1,9 @@
+/**
+ * Schnell kombiniert von Rasmus
+ * 
+ * Bewegungsmelder Based on  Example code for HC-SR501 PIR motion sensor with Arduino. More info: www.www.makerguides.com
+ */
+
 #include <WiFi.h>
 #include <MQTTPubSubClient.h>
 #include <ArduinoJson.h>

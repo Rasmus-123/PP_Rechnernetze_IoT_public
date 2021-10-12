@@ -1,4 +1,6 @@
 /**
+ * Kombiniert von Rasmus
+ * 
  * Triangulation mithilfe von 3 Empfängern und einem iBeacon.
  * 
  * Ein Empfänger eingestellt auf die MAC-Adresse eines Beacons, sendet die erhaltenen RSSI-Werte per MQTT weiter.  
