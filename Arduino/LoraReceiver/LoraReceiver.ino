@@ -1,5 +1,6 @@
 /*********
- * based on:
+Josephine Lechtermann
+  based on:
   LoRa Receiver
   pollux labs
   https://polluxlabs.net
