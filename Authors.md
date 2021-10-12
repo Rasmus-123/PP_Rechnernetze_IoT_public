@@ -14,7 +14,7 @@ Für einzelne Sensoren:
 
 ## RasPi
 
-- Webseite: Rasmus (+ Visual Studio Default asp.net Project)
+- Webseite: Rasmus
 
 - Datenbank: Rasmus
 
